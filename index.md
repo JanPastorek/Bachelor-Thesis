@@ -23,7 +23,7 @@ Optimalization of quantum strategies for non-local CHSH games via machine learni
 
 ### Bachelor thesis
 
-<a href="Bachelor_Thesis.pdf">Download File</a>
+<a href="Bachelor_s_Thesis.pdf">Download File</a>
 
 ### Structure of text - Main chapters
 
