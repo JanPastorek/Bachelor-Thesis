@@ -157,7 +157,7 @@ Optimalization of quantum strategies for non-local CHSH games via machine learni
   
 #### * final program (15.3.2021) -> Postponed till (31.3.2021)
 
-#### * completing main part of bachelor thesis (15.4.2021)
+#### * completing main part of bachelor thesis (15.4.2021)  -> Done on time
 
 #### * final testing and submitting (15.5.2021)
 
