@@ -143,6 +143,10 @@ Optimalization of quantum strategies for non-local CHSH games via machine learni
 <li> Doopisoval som implementaciu, uz zapracovavam skolitelove komentare a este pridavam nejake grafy do vysledkov, ktore opisujem </li>
 <li> Už robím na závere bakalárskej práce </li>
 </ul>
+                  <li> 4.5 - 11.5 </li>
+<ul>
+<li> Refactoring, dokumentácia kódu (uz som si vygeneroval dokumentaciu z kodu) a doladzovanie textu </li>
+</ul>
 </ul>
 </details>
 
