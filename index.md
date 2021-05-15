@@ -2,9 +2,9 @@
 
 
 ## Welcome
-This is my page for bachelor thesis
+I am Jan Pastorek and this is my webpage for bachelor thesis.
 
-### Name
+### Name of an assignment
 Machine learning for nonlocal games
 
 ### Supervisor
@@ -18,8 +18,8 @@ Nonlocal games are a key concept in quantum information, utilized from complexit
 Optimalization of quantum strategies for non-local CHSH games via machine learning and evolutionary algorithms.
 
 ### Code
-see readme at  <a href="https://github.com/janpastorek/Bachelor-Thesis">Project</a> and 
-<a href="https://github.com/janpastorek/Bachelor-Thesis/archive/refs/heads/master.zip">download file</a>
+see readme at  <a href="https://github.com/janpastorek/Bachelor-Thesis">Project</a> and download project files
+<a href="https://github.com/janpastorek/Bachelor-Thesis/archive/refs/heads/master.zip">here</a>
 
 ### Bachelor thesis
 
@@ -152,7 +152,7 @@ see readme at  <a href="https://github.com/janpastorek/Bachelor-Thesis">Project<
 
 <li> completing main part of bachelor thesis (15.4.2021)  -> Done on time </li>
 
-<li> final testing and submitting (15.5.2021) </li>
+<li> final testing and submitting (15.5.2021) -> Done on time </li>
 
 </ul>
 
