@@ -153,7 +153,6 @@ see readme at  <a href="https://github.com/janpastorek/Bachelor-Thesis">Project<
 
 </ul>
 
-
 ### Sources
 
 <a href="https://docs.google.com/document/d/1qOo0u9xQUziNXVe9xGa9vmwTgQ-spIhnZ7xd4Q12jvs/edit?usp=sharing">References</a>
