@@ -32,9 +32,6 @@ I built two Reinforcement learning agents to search these environments:
 On top of those I built Genetic algorithm that is able to optimalize agents hyperparameters (and also choose the best reward function)
 
 
-This application uses Open Source components. You can find the source code of their open source projects along with license information below. We acknowledge and are grateful to these developers for their contributions to open source.
-
-
 # Acknowledgments
 
 We are thankful to Daniel Nagaj for supervising this bachelor thesis, introducing us to the quantum computing and for useful discussions. We are also thankful to
