@@ -1,0 +1,217 @@
+:mod:`NLG.NonLocalGame`
+=======================
+
+.. py:module:: NLG.NonLocalGame
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NonLocalGame.abstractEnvironment
+   NLG.NonLocalGame.Game
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NonLocalGame.get_scaler
+   NLG.NonLocalGame.show_plot_of
+   NLG.NonLocalGame.override
+   NLG.NonLocalGame.game_with_rows_all_zeroes
+   NLG.NonLocalGame.generate_only_interesting_games
+   NLG.NonLocalGame.play_deterministic
+   NLG.NonLocalGame.quantumGEN
+   NLG.NonLocalGame.quantumNN
+   NLG.NonLocalGame.play_quantum
+   NLG.NonLocalGame.calc_difficulty_of_game
+   NLG.NonLocalGame.to_list
+   NLG.NonLocalGame.categorize
+   NLG.NonLocalGame.convert
+   NLG.NonLocalGame.max_entangled_difference
+
+
+
+.. function:: get_scaler(env, N, ALL_POSSIBLE_ACTIONS, round_to=2)
+
+   :returns scikit-learn scaler object to scale the states
+
+
+.. function:: show_plot_of(plot_this, label, place_line_at=())
+
+
+.. function:: override(f)
+
+
+.. class:: abstractEnvironment
+
+   Bases: :py:obj:`abc.ABC`
+
+   abstract environment to create CHSH framework
+
+   actions are expected in this format
+
+   ACTIONS = [q + axis + "0" for axis in 'xyz' for q in 'ra']
+   ACTIONS = [q + axis + "0" for axis in 'y' for q in 'r']
+   PLAYER = ['a', 'b']
+   QUESTION = ['0', '1']
+
+   ALL_POSSIBLE_ACTIONS = [[p + q + a] for p in PLAYER for q in QUESTION for a in ACTIONS]  # place one gate at some place
+   ALL_POSSIBLE_ACTIONS.append(["xxr0"])
+
+   # for 1 game with 2 EPR
+   ALL_POSSIBLE_ACTIONS.append(["a0cxnot"])
+   ALL_POSSIBLE_ACTIONS.append(["b0cxnot"])
+   #
+   # for xor paralel with 2EPR
+   ALL_POSSIBLE_ACTIONS.append(["a0cxnotr"])
+   ALL_POSSIBLE_ACTIONS.append(["b0cxnotr"])
+
+   .. method:: reset(self)
+      :abstractmethod:
+
+      Return initial_time_step.
+
+
+   .. method:: step(self, action)
+      :abstractmethod:
+
+      Apply action and return new time_step.
+
+
+   .. method:: measure_probabilities_analytically(self)
+
+      :returns probabilities of questions (e.g. 00,01,10,11) happening in matrix 
+
+
+   .. method:: calc_accuracy(self, result)
+
+      Calculates accurary by going through rules of the game given by game_type matrix
+      :returns winning probability / accuracy / win rate based on winning game_type 
+
+
+   .. method:: n_qubits_from_state(self)
+
+      There are 2^n states of n qubits, to get the n, we need to make log2 from state
+
+
+   .. method:: count_gates(self)
+
+      :returns count of relevant gates 
+
+
+   .. method:: get_gate(self, action)
+
+      :returns gate got from string code of action 
+
+
+   .. method:: reward_only_difference(self, difference)
+
+
+   .. method:: reward_qubic(self, difference)
+
+
+   .. method:: reward_only_best(self, difference)
+
+      reward only if it its better than results before 
+
+
+   .. method:: reward_combined(self, difference)
+
+
+   .. method:: complex_array_to_real(self, inp_array)
+
+      decomposes complex array into array of real numbers with double size. 
+
+
+
+.. class:: Game(scaler=None, round_to=2, batch_size=32)
+
+
+   creates framework for easier manipulation 
+
+   .. method:: play_one_episode(self, agent, env, DO)
+
+      Plays one episode of CHSH training
+      :returns last accuracy acquired and rewards from whole episode 
+
+
+   .. method:: evaluate_train(self, N, agent, env)
+
+      Performes the whole training of agent in env in N steps
+      :returns portfolio value and rewards for all episodes - serves to plot how it has trained
+
+
+   .. method:: evaluate_test(self, agent, env)
+
+      Tests what has the agent learnt in N=1 steps :returns accuracy and reward 
+
+
+
+.. function:: game_with_rows_all_zeroes(game)
+
+   Checks whether there is not full zero row in game 
+
+
+.. function:: generate_only_interesting_games(size=4, n_questions=2)
+
+   Generates only interesting evaluation tactics
+   because some are almost duplicates and some will have no difference between classic and quantum strategies. 
+
+
+.. function:: play_deterministic(game, which='best')
+
+   Learns to play the best classic strategy according to game 
+
+
+.. function:: quantumGEN(states, game)
+
+   Plays nonlocal game using genetic algorithm multiple -lenght(states)- times and returns the best and the worst result.
+   Works good for small nonlocal games with 1epr pair. For bigger games reinforcement learning is much better choice. 
+
+
+.. function:: quantumNN(states, agent_type, which, game)
+
+   Plays nonlocal game using reinforcement learning multiple -lenght(states)- times and returns the best and the worst result. 
+
+
+.. function:: play_quantum(game, which='best', agent_type=BasicAgent, n_qubits=2)
+
+   Learns to play the best quantum strategy according to game
+   for 2 qubits uses genetic alg., for more uses reinforcement learning
+
+
+.. function:: calc_difficulty_of_game(game)
+
+   Difficulty of the input game is calculated as a sum of all 1's in the whole game (evaluation) matrix
+
+
+.. function:: to_list(tuple)
+
+   converts tuple to list 
+
+
+.. function:: categorize(cutGames)
+
+   categorizes input games according to the best and worst classical strategy probabilities , e.g. (0.75,0.25) is the category for
+   CHSH game, because the best possible classical strategy will give you 0.75 success probability, the worst is 0.25 classicaly.
+
+
+.. function:: convert(list)
+
+   Converts list to categories. 
+
+
+.. function:: max_entangled_difference(n_players=2, n_questions=2, choose_n_games_from_each_category=5, best_or_worst='best', agent_type=BasicAgent, n_qubits=2)
+
+   Finds interesting games by searching through the space of possible interesting games. Compares maximum classical with quantum.
+   Puts results into local database
+
+

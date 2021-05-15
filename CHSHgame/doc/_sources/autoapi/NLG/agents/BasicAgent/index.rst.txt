@@ -1,0 +1,45 @@
+:mod:`NLG.agents.BasicAgent`
+============================
+
+.. py:module:: NLG.agents.BasicAgent
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.agents.BasicAgent.BasicAgent
+
+
+
+
+.. class:: BasicAgent(state_size, action_size, gamma, eps, eps_min, eps_decay, alpha, momentum, ALL_POSSIBLE_ACTIONS, model_type)
+
+
+   Reinforcement learning agent 
+
+   .. method:: act(self, state)
+
+      :returns action based on neural model prediction / epsilon greedy 
+
+
+   .. method:: train(self, state, action, reward, next_state, done)
+
+      performs one training step of neural network 
+
+
+   .. method:: load(self, name)
+
+      loads weights into model 
+
+
+   .. method:: save(self, name)
+
+      saves weight into model 
+
+
+

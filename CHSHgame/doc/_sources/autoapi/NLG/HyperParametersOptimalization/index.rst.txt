@@ -1,0 +1,58 @@
+:mod:`NLG.HyperParametersOptimalization`
+========================================
+
+.. py:module:: NLG.HyperParametersOptimalization
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.HyperParametersOptimalization.HyperParamCHSHOptimizer
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.HyperParametersOptimalization.ACTIONS
+
+
+.. class:: HyperParamCHSHOptimizer(population_size=15, n_crossover=3, mutation_prob=0.05, game_type=None, CHSH=None, max_gates=10, n_questions=2, ALL_POSSIBLE_ACTIONS=None, agent_type=BasicAgent, best_or_worst='best')
+
+
+   Bases: :py:obj:`optimalizers.GeneticAlg.GeneticAlg`
+
+   Works only for DiscreteStatesActions.Environment because of different init parameters 
+
+   .. method:: generate_individual(self)
+
+
+   .. method:: fitness(self, x)
+
+
+   .. method:: number_mutation(self, x, prob)
+
+      Elements of x are real numbers [0.0 .. 1.0]. Mutate (i.e. add/substract random number)
+      each number in x with given probabipity.
+
+
+   .. method:: mutation(self, x, prob)
+
+
+   .. method:: solve(self, max_generations, goal_fitness=1)
+
+
+
+.. data:: ACTIONS
+   
+
+   
+

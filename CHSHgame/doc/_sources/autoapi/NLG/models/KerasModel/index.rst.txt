@@ -1,0 +1,62 @@
+:mod:`NLG.models.KerasModel`
+============================
+
+.. py:module:: NLG.models.KerasModel
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.models.KerasModel.KerasModel
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.models.KerasModel.override
+   NLG.models.KerasModel.show_history
+
+
+
+.. function:: override(f)
+
+
+.. function:: show_history(history, block=True)
+
+
+.. class:: KerasModel(input_dim, n_action)
+
+
+   Bases: :py:obj:`RegressionModel.RegressionModel`
+
+   Regression model using more layers 
+
+   .. attribute:: physical_devices
+      
+
+      
+
+   .. method:: predict(self, X)
+
+
+   .. method:: sgd(self, X, Y, learning_rate, momentum)
+
+
+   .. method:: load_weights(self, _)
+
+
+   .. method:: save_weights(self, _)
+
+
+   .. method:: get_losses(self)
+
+
+

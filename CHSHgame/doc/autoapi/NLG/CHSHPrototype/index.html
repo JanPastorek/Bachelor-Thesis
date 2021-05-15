@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLG.CHSHPrototype &#8212; Nonlocal games 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-NLG.CHSHPrototype">
+<span id="nlg-chshprototype"></span><h1><a class="reference internal" href="#module-NLG.CHSHPrototype" title="NLG.CHSHPrototype"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.CHSHPrototype</span></code></a><a class="headerlink" href="#module-NLG.CHSHPrototype" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.QuantumState" title="NLG.CHSHPrototype.QuantumState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumState</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.QuantumOperation" title="NLG.CHSHPrototype.QuantumOperation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumOperation</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.is_unitary" title="NLG.CHSHPrototype.is_unitary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_unitary</span></code></a>(M)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.win" title="NLG.CHSHPrototype.win"><code class="xref py py-obj docutils literal notranslate"><span class="pre">win</span></code></a>(a, b, s, t)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.U_X" title="NLG.CHSHPrototype.U_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_X</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.U_H" title="NLG.CHSHPrototype.U_H"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_H</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.U_alice_0" title="NLG.CHSHPrototype.U_alice_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_alice_0</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id0" title="NLG.CHSHPrototype.U_alice_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_alice_1</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id1" title="NLG.CHSHPrototype.U_bob_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_bob_0</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id2" title="NLG.CHSHPrototype.U_bob_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_bob_1</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id0" title="NLG.CHSHPrototype.U_alice_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_alice_1</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id1" title="NLG.CHSHPrototype.U_bob_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_bob_0</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id2" title="NLG.CHSHPrototype.U_bob_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U_bob_1</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.wins" title="NLG.CHSHPrototype.wins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wins</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.a" title="NLG.CHSHPrototype.a"><code class="xref py py-obj docutils literal notranslate"><span class="pre">a</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.b" title="NLG.CHSHPrototype.b"><code class="xref py py-obj docutils literal notranslate"><span class="pre">b</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id3" title="NLG.CHSHPrototype.state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.result" title="NLG.CHSHPrototype.result"><code class="xref py py-obj docutils literal notranslate"><span class="pre">result</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id3" title="NLG.CHSHPrototype.state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.win_rate" title="NLG.CHSHPrototype.win_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">win_rate</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.CHSHPrototype.evaluation_tactic" title="NLG.CHSHPrototype.evaluation_tactic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluation_tactic</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id4" title="NLG.CHSHPrototype.win_rate1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">win_rate1</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id4" title="NLG.CHSHPrototype.win_rate1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">win_rate1</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt id="NLG.CHSHPrototype.is_unitary">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">is_unitary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.is_unitary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="NLG.CHSHPrototype.QuantumState">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">QuantumState</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumState" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="NLG.CHSHPrototype.QuantumState.measure">
+<code class="sig-name descname"><span class="pre">measure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumState.measure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.CHSHPrototype.QuantumState.measure_analytic">
+<code class="sig-name descname"><span class="pre">measure_analytic</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumState.measure_analytic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.CHSHPrototype.QuantumState.compose">
+<code class="sig-name descname"><span class="pre">compose</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumState.compose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.CHSHPrototype.QuantumState.__repr__">
+<code class="sig-name descname"><span class="pre">__repr__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumState.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="NLG.CHSHPrototype.QuantumOperation">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">QuantumOperation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumOperation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="NLG.CHSHPrototype.QuantumOperation.apply">
+<code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumOperation.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.CHSHPrototype.QuantumOperation.compose">
+<code class="sig-name descname"><span class="pre">compose</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumOperation.compose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.CHSHPrototype.QuantumOperation.__repr__">
+<code class="sig-name descname"><span class="pre">__repr__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.QuantumOperation.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.U_X">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_X</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[[0,</span> <span class="pre">1],</span> <span class="pre">[1,</span> <span class="pre">0]]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.U_X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.U_H">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_H</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[None,</span> <span class="pre">None]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.U_H" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.U_alice_0">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_alice_0</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[[1,</span> <span class="pre">0],</span> <span class="pre">[0,</span> <span class="pre">1]]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.U_alice_0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.U_alice_1">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_alice_1</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[None,</span> <span class="pre">None]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.U_alice_1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.U_bob_0">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_bob_0</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[None,</span> <span class="pre">None]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.U_bob_0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.U_bob_1">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_bob_1</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[None,</span> <span class="pre">None]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.U_bob_1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="id0">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_alice_1</span></code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="id1">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_bob_0</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[[1,</span> <span class="pre">0],</span> <span class="pre">[0,</span> <span class="pre">1]]</span></em><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="id2">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">U_bob_1</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[[1,</span> <span class="pre">0],</span> <span class="pre">[0,</span> <span class="pre">1]]</span></em><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="NLG.CHSHPrototype.win">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">win</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.CHSHPrototype.win" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.wins">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">wins</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#NLG.CHSHPrototype.wins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.a">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">a</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.a" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.b">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">b</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.state">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">state</span></code><a class="headerlink" href="#NLG.CHSHPrototype.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.result">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">result</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="id3">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">state</span></code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.win_rate">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">win_rate</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#NLG.CHSHPrototype.win_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.evaluation_tactic">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">evaluation_tactic</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1],</span> <span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1],</span> <span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1],</span> <span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0]]</span></em><a class="headerlink" href="#NLG.CHSHPrototype.evaluation_tactic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.CHSHPrototype.win_rate1">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">win_rate1</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#NLG.CHSHPrototype.win_rate1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="id4">
+<code class="sig-prename descclassname"><span class="pre">NLG.CHSHPrototype.</span></code><code class="sig-name descname"><span class="pre">win_rate1</span></code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Nonlocal games</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Jan Pastorek.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/autoapi/NLG/CHSHPrototype/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,77 @@
+:mod:`NLG.optimalizers.GeneticAlg`
+==================================
+
+.. py:module:: NLG.optimalizers.GeneticAlg
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.optimalizers.GeneticAlg.GeneticAlg
+
+
+
+
+.. class:: GeneticAlg
+
+   Bases: :py:obj:`abc.ABC`
+
+   Abstract genetic algorithm framwork 
+
+   .. method:: generate_individual(self)
+      :abstractmethod:
+
+      Generate random individual.
+      To be implemented in subclasses
+
+
+   .. method:: show_individual(self, x)
+
+      Show the given individual x, either to console or graphically.
+
+
+   .. method:: fitness(self, x)
+      :abstractmethod:
+
+      Returns fitness of a given individual.
+      To be implemented in subclasses
+
+
+   .. method:: crossover(self, x, y, k)
+
+      Take two parents (x and y) and make two children by applying k-point
+      crossover. Positions for crossover are chosen randomly.
+
+
+   .. method:: boolean_mutation(self, x, prob)
+
+      Elements of x are 0 or 1. Mutate (i.e. change) each element of x with given probability.
+
+
+   .. method:: number_mutation(self, x, prob)
+      :abstractmethod:
+
+      Elements of x are real numbers [0.0 .. 1.0]. Mutate (i.e. add/substract random number)
+      each number in x with given probabipity.
+
+
+   .. method:: mutation(self, x, prob)
+      :abstractmethod:
+
+      Decides which mutation will occur. 
+
+
+   .. method:: solve(self, max_generations, goal_fitness=1)
+      :abstractmethod:
+
+      Implementation of genetic algorithm. Produce generations until some
+      individual`s fitness reaches goal_fitness, or you exceed total number
+      of max_generations generations. Return best found individual.
+
+
+

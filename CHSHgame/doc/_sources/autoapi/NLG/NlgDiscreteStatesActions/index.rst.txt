@@ -1,0 +1,74 @@
+:mod:`NLG.NlgDiscreteStatesActions`
+===================================
+
+.. py:module:: NLG.NlgDiscreteStatesActions
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgDiscreteStatesActions.Environment
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgDiscreteStatesActions.ACTIONS
+
+
+.. class:: Environment(n_questions, game_type, max_gates, n_players=2, initial_state=np.array([0, 1 / sqrt(2), -1 / sqrt(2), 0], dtype=np.complex64), best_or_worst='best', reward_function=None, anneal=False, n_games=1)
+
+
+   Bases: :py:obj:`NonLocalGame.abstractEnvironment`
+
+   Creates CHSH environments for quantum strategies, discretizes and states and uses discrete actions 
+
+   .. method:: reset(self)
+
+
+   .. method:: calculate_state(self, history_actions, anneal=False)
+
+      Calculates the state according to previous actions in parameter history_actions 
+
+
+   .. method:: save_interesting_strategies(self)
+
+
+   .. method:: step(self, action)
+
+
+   .. method:: anneal(self, steps=80, t_start=2, t_end=0.001)
+
+      Finds the maximal value of the fitness function by
+      executing the simulated annealing algorithm.
+      Returns a state (e.g. x) for which fitness(x) is maximal. 
+
+
+   .. method:: fitness(self, x)
+
+      Calculates fitness of the state given by calculation of accuracy over history of actions.
+
+
+   .. method:: neighbors(self, x, span=30, delta=0.5)
+
+      Creates neighboring gate angle to angle x
+
+
+   .. method:: random_state(self)
+
+
+
+.. data:: ACTIONS
+   
+
+   
+

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLG.NlgDeterministic &#8212; Nonlocal games 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-NLG.NlgDeterministic">
+<span id="nlg-nlgdeterministic"></span><h1><a class="reference internal" href="#module-NLG.NlgDeterministic" title="NLG.NlgDeterministic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NlgDeterministic</span></code></a><a class="headerlink" href="#module-NLG.NlgDeterministic" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NlgDeterministic.Environment" title="NLG.NlgDeterministic.Environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Environment</span></code></a></p></td>
+<td><p>creates CHSH for classic deterministic strategies, works small for 4x4 games</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NlgDeterministic.rule" title="NLG.NlgDeterministic.rule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rule</span></code></a>(a, b, x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NlgDeterministic.create" title="NLG.NlgDeterministic.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(game_type)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NlgDeterministic.game_type" title="NLG.NlgDeterministic.game_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">game_type</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="NLG.NlgDeterministic.Environment">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">NLG.NlgDeterministic.</span></code><code class="sig-name descname"><span class="pre">Environment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_players</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_questions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLocalGame.abstractEnvironment</span></code></p>
+<p>creates CHSH for classic deterministic strategies, works small for 4x4 games</p>
+<dl class="py method">
+<dt id="NLG.NlgDeterministic.Environment.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.Environment.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDeterministic.Environment.step">
+<code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.Environment.step" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDeterministic.Environment.index">
+<code class="sig-name descname"><span class="pre">index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.Environment.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>:returns index of response so that it can be mapped to state</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDeterministic.Environment.evaluate">
+<code class="sig-name descname"><span class="pre">evaluate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.Environment.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>:returns winning accuracy to input question based on response</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDeterministic.Environment.play_all_strategies">
+<code class="sig-name descname"><span class="pre">play_all_strategies</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.Environment.play_all_strategies" title="Permalink to this definition">¶</a></dt>
+<dd><p>plays 16 different strategies,evaluate each and :returns: the best accuracy from all strategies</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDeterministic.Environment.response_rek">
+<code class="sig-name descname"><span class="pre">response_rek</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.Environment.response_rek" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NlgDeterministic.rule">
+<code class="sig-prename descclassname"><span class="pre">NLG.NlgDeterministic.</span></code><code class="sig-name descname"><span class="pre">rule</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.rule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NlgDeterministic.create">
+<code class="sig-prename descclassname"><span class="pre">NLG.NlgDeterministic.</span></code><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDeterministic.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="NLG.NlgDeterministic.game_type">
+<code class="sig-prename descclassname"><span class="pre">NLG.NlgDeterministic.</span></code><code class="sig-name descname"><span class="pre">game_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1],</span> <span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1],</span> <span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1],</span> <span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0]]</span></em><a class="headerlink" href="#NLG.NlgDeterministic.game_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Nonlocal games</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Jan Pastorek.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/autoapi/NLG/NlgDeterministic/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,15 @@
+:mod:`NLG.optimalizers`
+=======================
+
+.. py:module:: NLG.optimalizers
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   GeneticAlg/index.rst
+
+

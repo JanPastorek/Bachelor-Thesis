@@ -1,0 +1,189 @@
+:mod:`NLG.CHSHPrototype`
+========================
+
+.. py:module:: NLG.CHSHPrototype
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.CHSHPrototype.QuantumState
+   NLG.CHSHPrototype.QuantumOperation
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.CHSHPrototype.is_unitary
+   NLG.CHSHPrototype.win
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.CHSHPrototype.U_X
+   NLG.CHSHPrototype.U_H
+   NLG.CHSHPrototype.U_alice_0
+   NLG.CHSHPrototype.U_alice_1
+   NLG.CHSHPrototype.U_bob_0
+   NLG.CHSHPrototype.U_bob_1
+   NLG.CHSHPrototype.U_alice_1
+   NLG.CHSHPrototype.U_bob_0
+   NLG.CHSHPrototype.U_bob_1
+   NLG.CHSHPrototype.wins
+   NLG.CHSHPrototype.a
+   NLG.CHSHPrototype.b
+   NLG.CHSHPrototype.state
+   NLG.CHSHPrototype.result
+   NLG.CHSHPrototype.state
+   NLG.CHSHPrototype.win_rate
+   NLG.CHSHPrototype.evaluation_tactic
+   NLG.CHSHPrototype.win_rate1
+   NLG.CHSHPrototype.win_rate1
+
+
+.. function:: is_unitary(M)
+
+
+.. class:: QuantumState(vector)
+
+
+   .. method:: measure(self)
+
+
+   .. method:: measure_analytic(self)
+
+
+   .. method:: compose(self, state)
+
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: QuantumOperation(matrix)
+
+
+   .. method:: apply(self, state)
+
+
+   .. method:: compose(self, operation)
+
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. data:: U_X
+   :annotation: = [[0, 1], [1, 0]]
+
+   
+
+.. data:: U_H
+   :annotation: = [None, None]
+
+   
+
+.. data:: U_alice_0
+   :annotation: = [[1, 0], [0, 1]]
+
+   
+
+.. data:: U_alice_1
+   :annotation: = [None, None]
+
+   
+
+.. data:: U_bob_0
+   :annotation: = [None, None]
+
+   
+
+.. data:: U_bob_1
+   :annotation: = [None, None]
+
+   
+
+.. data:: U_alice_1
+   
+
+   
+
+.. data:: U_bob_0
+   :annotation: = [[1, 0], [0, 1]]
+
+   
+
+.. data:: U_bob_1
+   :annotation: = [[1, 0], [0, 1]]
+
+   
+
+.. function:: win(a, b, s, t)
+
+
+.. data:: wins
+   :annotation: = 0
+
+   
+
+.. data:: a
+   :annotation: = []
+
+   
+
+.. data:: b
+   :annotation: = []
+
+   
+
+.. data:: state
+   
+
+   
+
+.. data:: result
+   :annotation: = []
+
+   
+
+.. data:: state
+   
+
+   
+
+.. data:: win_rate
+   :annotation: = 0
+
+   
+
+.. data:: evaluation_tactic
+   :annotation: = [[1, 0, 0, 1], [1, 0, 0, 1], [1, 0, 0, 1], [0, 1, 1, 0]]
+
+   
+
+.. data:: win_rate1
+   :annotation: = 0
+
+   
+
+.. data:: win_rate1
+   
+
+   
+

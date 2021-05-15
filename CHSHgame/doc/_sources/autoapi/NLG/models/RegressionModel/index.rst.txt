@@ -1,0 +1,51 @@
+:mod:`NLG.models.RegressionModel`
+=================================
+
+.. py:module:: NLG.models.RegressionModel
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.models.RegressionModel.RegressionModel
+
+
+
+
+.. class:: RegressionModel
+
+   Bases: :py:obj:`abc.ABC`
+
+   a linear regression models 
+
+   .. method:: predict(self, x)
+
+      predicts output for input 
+
+
+   .. method:: sgd(self, x, y, learning_rate=0.01, momentum=0.9)
+
+      makes one step of sgd 
+
+
+   .. method:: load_weights(self, filepath)
+
+      loads weights 
+
+
+   .. method:: save_weights(self, filepath)
+
+      saves weights 
+
+
+   .. method:: get_losses(self)
+
+      returns learning loss 
+
+
+

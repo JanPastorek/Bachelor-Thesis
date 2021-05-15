@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLG.NonLocalGame &#8212; Nonlocal games 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-NLG.NonLocalGame">
+<span id="nlg-nonlocalgame"></span><h1><a class="reference internal" href="#module-NLG.NonLocalGame" title="NLG.NonLocalGame"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NonLocalGame</span></code></a><a class="headerlink" href="#module-NLG.NonLocalGame" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NonLocalGame.abstractEnvironment" title="NLG.NonLocalGame.abstractEnvironment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abstractEnvironment</span></code></a></p></td>
+<td><p>abstract environment to create CHSH framework</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NonLocalGame.Game" title="NLG.NonLocalGame.Game"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Game</span></code></a></p></td>
+<td><p>creates framework for easier manipulation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NonLocalGame.get_scaler" title="NLG.NonLocalGame.get_scaler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scaler</span></code></a>(env, N, ALL_POSSIBLE_ACTIONS, round_to=2)</p></td>
+<td><p>:returns scikit-learn scaler object to scale the states</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NonLocalGame.show_plot_of" title="NLG.NonLocalGame.show_plot_of"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_plot_of</span></code></a>(plot_this, label, place_line_at=())</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NonLocalGame.override" title="NLG.NonLocalGame.override"><code class="xref py py-obj docutils literal notranslate"><span class="pre">override</span></code></a>(f)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NonLocalGame.game_with_rows_all_zeroes" title="NLG.NonLocalGame.game_with_rows_all_zeroes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">game_with_rows_all_zeroes</span></code></a>(game)</p></td>
+<td><p>Checks whether there is not full zero row in game</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NonLocalGame.generate_only_interesting_games" title="NLG.NonLocalGame.generate_only_interesting_games"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_only_interesting_games</span></code></a>(size=4, n_questions=2)</p></td>
+<td><p>Generates only interesting evaluation tactics</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NonLocalGame.play_deterministic" title="NLG.NonLocalGame.play_deterministic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_deterministic</span></code></a>(game, which='best')</p></td>
+<td><p>Learns to play the best classic strategy according to game</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NonLocalGame.quantumGEN" title="NLG.NonLocalGame.quantumGEN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantumGEN</span></code></a>(states, game)</p></td>
+<td><p>Plays nonlocal game using genetic algorithm multiple -lenght(states)- times and returns the best and the worst result.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NonLocalGame.quantumNN" title="NLG.NonLocalGame.quantumNN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantumNN</span></code></a>(states, agent_type, which, game)</p></td>
+<td><p>Plays nonlocal game using reinforcement learning multiple -lenght(states)- times and returns the best and the worst result.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NonLocalGame.play_quantum" title="NLG.NonLocalGame.play_quantum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_quantum</span></code></a>(game, which='best', agent_type=BasicAgent, n_qubits=2)</p></td>
+<td><p>Learns to play the best quantum strategy according to game</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NonLocalGame.calc_difficulty_of_game" title="NLG.NonLocalGame.calc_difficulty_of_game"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_difficulty_of_game</span></code></a>(game)</p></td>
+<td><p>Difficulty of the input game is calculated as a sum of all 1’s in the whole game (evaluation) matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NonLocalGame.to_list" title="NLG.NonLocalGame.to_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_list</span></code></a>(tuple)</p></td>
+<td><p>converts tuple to list</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NonLocalGame.categorize" title="NLG.NonLocalGame.categorize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">categorize</span></code></a>(cutGames)</p></td>
+<td><p>categorizes input games according to the best and worst classical strategy probabilities , e.g. (0.75,0.25) is the category for</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NonLocalGame.convert" title="NLG.NonLocalGame.convert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert</span></code></a>(list)</p></td>
+<td><p>Converts list to categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NLG.NonLocalGame.max_entangled_difference" title="NLG.NonLocalGame.max_entangled_difference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_entangled_difference</span></code></a>(n_players=2, n_questions=2, choose_n_games_from_each_category=5, best_or_worst='best', agent_type=BasicAgent, n_qubits=2)</p></td>
+<td><p>Finds interesting games by searching through the space of possible interesting games. Compares maximum classical with quantum.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt id="NLG.NonLocalGame.get_scaler">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">get_scaler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ALL_POSSIBLE_ACTIONS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.get_scaler" title="Permalink to this definition">¶</a></dt>
+<dd><p>:returns scikit-learn scaler object to scale the states</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.show_plot_of">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">show_plot_of</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_this</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_line_at</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.show_plot_of" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.override">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">override</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.override" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="NLG.NonLocalGame.abstractEnvironment">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">abstractEnvironment</span></code><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>abstract environment to create CHSH framework</p>
+<p>actions are expected in this format</p>
+<p>ACTIONS = [q + axis + “0” for axis in ‘xyz’ for q in ‘ra’]
+ACTIONS = [q + axis + “0” for axis in ‘y’ for q in ‘r’]
+PLAYER = [‘a’, ‘b’]
+QUESTION = [‘0’, ‘1’]</p>
+<p>ALL_POSSIBLE_ACTIONS = [[p + q + a] for p in PLAYER for q in QUESTION for a in ACTIONS]  # place one gate at some place
+ALL_POSSIBLE_ACTIONS.append([“xxr0”])</p>
+<p># for 1 game with 2 EPR
+ALL_POSSIBLE_ACTIONS.append([“a0cxnot”])
+ALL_POSSIBLE_ACTIONS.append([“b0cxnot”])
+#
+# for xor paralel with 2EPR
+ALL_POSSIBLE_ACTIONS.append([“a0cxnotr”])
+ALL_POSSIBLE_ACTIONS.append([“b0cxnotr”])</p>
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.reset">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return initial_time_step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.step">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply action and return new time_step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.measure_probabilities_analytically">
+<code class="sig-name descname"><span class="pre">measure_probabilities_analytically</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.measure_probabilities_analytically" title="Permalink to this definition">¶</a></dt>
+<dd><p>:returns probabilities of questions (e.g. 00,01,10,11) happening in matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.calc_accuracy">
+<code class="sig-name descname"><span class="pre">calc_accuracy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.calc_accuracy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates accurary by going through rules of the game given by game_type matrix
+:returns winning probability / accuracy / win rate based on winning game_type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.n_qubits_from_state">
+<code class="sig-name descname"><span class="pre">n_qubits_from_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.n_qubits_from_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>There are 2^n states of n qubits, to get the n, we need to make log2 from state</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.count_gates">
+<code class="sig-name descname"><span class="pre">count_gates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.count_gates" title="Permalink to this definition">¶</a></dt>
+<dd><p>:returns count of relevant gates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.get_gate">
+<code class="sig-name descname"><span class="pre">get_gate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.get_gate" title="Permalink to this definition">¶</a></dt>
+<dd><p>:returns gate got from string code of action</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.reward_only_difference">
+<code class="sig-name descname"><span class="pre">reward_only_difference</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">difference</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.reward_only_difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.reward_qubic">
+<code class="sig-name descname"><span class="pre">reward_qubic</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">difference</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.reward_qubic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.reward_only_best">
+<code class="sig-name descname"><span class="pre">reward_only_best</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">difference</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.reward_only_best" title="Permalink to this definition">¶</a></dt>
+<dd><p>reward only if it its better than results before</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.reward_combined">
+<code class="sig-name descname"><span class="pre">reward_combined</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">difference</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.reward_combined" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.abstractEnvironment.complex_array_to_real">
+<code class="sig-name descname"><span class="pre">complex_array_to_real</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.abstractEnvironment.complex_array_to_real" title="Permalink to this definition">¶</a></dt>
+<dd><p>decomposes complex array into array of real numbers with double size.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="NLG.NonLocalGame.Game">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">Game</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scaler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.Game" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates framework for easier manipulation</p>
+<dl class="py method">
+<dt id="NLG.NonLocalGame.Game.play_one_episode">
+<code class="sig-name descname"><span class="pre">play_one_episode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DO</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.Game.play_one_episode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays one episode of CHSH training
+:returns last accuracy acquired and rewards from whole episode</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.Game.evaluate_train">
+<code class="sig-name descname"><span class="pre">evaluate_train</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.Game.evaluate_train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performes the whole training of agent in env in N steps
+:returns portfolio value and rewards for all episodes - serves to plot how it has trained</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NonLocalGame.Game.evaluate_test">
+<code class="sig-name descname"><span class="pre">evaluate_test</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.Game.evaluate_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests what has the agent learnt in N=1 steps :returns accuracy and reward</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.game_with_rows_all_zeroes">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">game_with_rows_all_zeroes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.game_with_rows_all_zeroes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether there is not full zero row in game</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.generate_only_interesting_games">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">generate_only_interesting_games</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_questions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.generate_only_interesting_games" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates only interesting evaluation tactics
+because some are almost duplicates and some will have no difference between classic and quantum strategies.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.play_deterministic">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">play_deterministic</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'best'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.play_deterministic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learns to play the best classic strategy according to game</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.quantumGEN">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">quantumGEN</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.quantumGEN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays nonlocal game using genetic algorithm multiple -lenght(states)- times and returns the best and the worst result.
+Works good for small nonlocal games with 1epr pair. For bigger games reinforcement learning is much better choice.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.quantumNN">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">quantumNN</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.quantumNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays nonlocal game using reinforcement learning multiple -lenght(states)- times and returns the best and the worst result.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.play_quantum">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">play_quantum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BasicAgent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.play_quantum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learns to play the best quantum strategy according to game
+for 2 qubits uses genetic alg., for more uses reinforcement learning</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.calc_difficulty_of_game">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">calc_difficulty_of_game</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.calc_difficulty_of_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Difficulty of the input game is calculated as a sum of all 1’s in the whole game (evaluation) matrix</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.to_list">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">to_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.to_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts tuple to list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.categorize">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">categorize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutGames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.categorize" title="Permalink to this definition">¶</a></dt>
+<dd><p>categorizes input games according to the best and worst classical strategy probabilities , e.g. (0.75,0.25) is the category for
+CHSH game, because the best possible classical strategy will give you 0.75 success probability, the worst is 0.25 classicaly.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.convert">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">convert</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts list to categories.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NLG.NonLocalGame.max_entangled_difference">
+<code class="sig-prename descclassname"><span class="pre">NLG.NonLocalGame.</span></code><code class="sig-name descname"><span class="pre">max_entangled_difference</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_players</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_questions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choose_n_games_from_each_category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">best_or_worst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BasicAgent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NonLocalGame.max_entangled_difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds interesting games by searching through the space of possible interesting games. Compares maximum classical with quantum.
+Puts results into local database</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Nonlocal games</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Jan Pastorek.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/autoapi/NLG/NonLocalGame/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

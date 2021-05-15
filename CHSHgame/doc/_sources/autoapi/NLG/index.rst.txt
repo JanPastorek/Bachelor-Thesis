@@ -1,0 +1,35 @@
+:mod:`NLG`
+==========
+
+.. py:module:: NLG
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   agents/index.rst
+   database/index.rst
+   models/index.rst
+   optimalizers/index.rst
+   tests/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   CHSHPrototype/index.rst
+   HyperParametersOptimalization/index.rst
+   NlgContinuousGlobalOptimalization/index.rst
+   NlgDeterministic/index.rst
+   NlgDiscreteStatesActions/index.rst
+   NlgGeneticOptimalization/index.rst
+   NlgParalelClassical/index.rst
+   NonLocalGame/index.rst
+
+

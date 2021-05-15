@@ -1,0 +1,47 @@
+:mod:`NLG.NlgContinuousGlobalOptimalization`
+============================================
+
+.. py:module:: NLG.NlgContinuousGlobalOptimalization
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgContinuousGlobalOptimalization.Environment
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgContinuousGlobalOptimalization.ACTIONS
+
+
+.. class:: Environment(n_questions, game_type, max_gates, num_players=2, initial_state=np.array([0, 1 / sqrt(2), -1 / sqrt(2), 0], dtype=np.float64))
+
+
+   Bases: :py:obj:`NonLocalGame.abstractEnvironment`
+
+   .. method:: reset(self)
+
+
+   .. method:: calculate_new_state(self, action)
+
+
+   .. method:: step(self, action)
+
+
+
+.. data:: ACTIONS
+   :annotation: = ['r0']
+
+   
+

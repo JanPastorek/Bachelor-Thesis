@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLG.NlgParalelClassical &#8212; Nonlocal games 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-NLG.NlgParalelClassical">
+<span id="nlg-nlgparalelclassical"></span><h1><a class="reference internal" href="#module-NLG.NlgParalelClassical" title="NLG.NlgParalelClassical"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NlgParalelClassical</span></code></a><a class="headerlink" href="#module-NLG.NlgParalelClassical" title="Permalink to this headline">¶</a></h1>
+<p>evaluating classical strategies for N parallel CHSH games
+inspired by Daniel Nagaj’s solution, added memoization and C libraries + encapsulation and abstracion</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NlgParalelClassical.Environment" title="NLG.NlgParalelClassical.Environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Environment</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NlgParalelClassical.start" title="NLG.NlgParalelClassical.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="NLG.NlgParalelClassical.Environment">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">NLG.NlgParalelClassical.</span></code><code class="sig-name descname"><span class="pre">Environment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_players</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_questions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_games</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgParalelClassical.Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLocalGame.abstractEnvironment</span></code></p>
+<dl class="py method">
+<dt id="NLG.NlgParalelClassical.Environment.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgParalelClassical.Environment.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgParalelClassical.Environment.step">
+<code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgParalelClassical.Environment.step" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgParalelClassical.Environment.evaluate_CHSH">
+<code class="sig-name descname"><span class="pre">evaluate_CHSH</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgParalelClassical.Environment.evaluate_CHSH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgParalelClassical.Environment.evaluate_parallelCHSH">
+<code class="sig-name descname"><span class="pre">evaluate_parallelCHSH</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Aanswer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Banswer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgParalelClassical.Environment.evaluate_parallelCHSH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgParalelClassical.Environment.binary_add">
+<code class="sig-name descname"><span class="pre">binary_add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgParalelClassical.Environment.binary_add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgParalelClassical.Environment.binary_add1">
+<code class="sig-name descname"><span class="pre">binary_add1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgParalelClassical.Environment.binary_add1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgParalelClassical.Environment.play_all_strategies">
+<code class="sig-name descname"><span class="pre">play_all_strategies</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nrounds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgParalelClassical.Environment.play_all_strategies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt id="NLG.NlgParalelClassical.start">
+<code class="sig-prename descclassname"><span class="pre">NLG.NlgParalelClassical.</span></code><code class="sig-name descname"><span class="pre">start</span></code><a class="headerlink" href="#NLG.NlgParalelClassical.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Nonlocal games</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Jan Pastorek.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/autoapi/NLG/NlgParalelClassical/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

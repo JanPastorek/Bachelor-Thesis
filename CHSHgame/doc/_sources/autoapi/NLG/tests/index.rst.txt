@@ -1,0 +1,15 @@
+:mod:`NLG.tests`
+================
+
+.. py:module:: NLG.tests
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   testNonLocalGames/index.rst
+
+

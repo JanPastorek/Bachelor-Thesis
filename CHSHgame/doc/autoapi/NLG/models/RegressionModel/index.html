@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLG.models.RegressionModel &#8212; Nonlocal games 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-NLG.models.RegressionModel">
+<span id="nlg-models-regressionmodel"></span><h1><a class="reference internal" href="#module-NLG.models.RegressionModel" title="NLG.models.RegressionModel"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.models.RegressionModel</span></code></a><a class="headerlink" href="#module-NLG.models.RegressionModel" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.models.RegressionModel.RegressionModel" title="NLG.models.RegressionModel.RegressionModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegressionModel</span></code></a></p></td>
+<td><p>a linear regression models</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="NLG.models.RegressionModel.RegressionModel">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">NLG.models.RegressionModel.</span></code><code class="sig-name descname"><span class="pre">RegressionModel</span></code><a class="headerlink" href="#NLG.models.RegressionModel.RegressionModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>a linear regression models</p>
+<dl class="py method">
+<dt id="NLG.models.RegressionModel.RegressionModel.predict">
+<code class="sig-name descname"><span class="pre">predict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.models.RegressionModel.RegressionModel.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>predicts output for input</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.models.RegressionModel.RegressionModel.sgd">
+<code class="sig-name descname"><span class="pre">sgd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.models.RegressionModel.RegressionModel.sgd" title="Permalink to this definition">¶</a></dt>
+<dd><p>makes one step of sgd</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.models.RegressionModel.RegressionModel.load_weights">
+<code class="sig-name descname"><span class="pre">load_weights</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.models.RegressionModel.RegressionModel.load_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads weights</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.models.RegressionModel.RegressionModel.save_weights">
+<code class="sig-name descname"><span class="pre">save_weights</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.models.RegressionModel.RegressionModel.save_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>saves weights</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.models.RegressionModel.RegressionModel.get_losses">
+<code class="sig-name descname"><span class="pre">get_losses</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.models.RegressionModel.RegressionModel.get_losses" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns learning loss</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">Nonlocal games</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Jan Pastorek.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../../_sources/autoapi/NLG/models/RegressionModel/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

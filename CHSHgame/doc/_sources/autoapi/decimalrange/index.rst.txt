@@ -1,0 +1,92 @@
+:mod:`decimalrange`
+===================
+
+.. py:module:: decimalrange
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   decimalrange.Game
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   decimalrange.complex_array_to_real
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   decimalrange.s
+   decimalrange.s1
+   decimalrange.s
+   decimalrange.s
+   decimalrange.s1
+   decimalrange.s1
+   decimalrange.responses
+
+
+.. data:: s
+   
+
+   
+
+.. data:: s1
+   
+
+   
+
+.. data:: s
+   
+
+   
+
+.. data:: s
+   
+
+   
+
+.. data:: s1
+   
+
+   
+
+.. data:: s1
+   
+
+   
+
+.. class:: Game(scaler)
+
+
+   .. method:: play_one_episode(self, agent, env, is_train)
+
+
+   .. method:: evaluate_train(self, N, agent, env)
+
+
+   .. method:: evaluate_test(self, agent, n_questions, tactic, max_gates, env)
+
+
+
+.. function:: complex_array_to_real(inp_array)
+
+
+.. data:: responses
+   
+
+   
+

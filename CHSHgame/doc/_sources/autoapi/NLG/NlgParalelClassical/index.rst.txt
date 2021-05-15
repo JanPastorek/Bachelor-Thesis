@@ -1,0 +1,65 @@
+:mod:`NLG.NlgParalelClassical`
+==============================
+
+.. py:module:: NLG.NlgParalelClassical
+
+.. autoapi-nested-parse::
+
+   evaluating classical strategies for N parallel CHSH games
+   inspired by Daniel Nagaj's solution, added memoization and C libraries + encapsulation and abstracion
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgParalelClassical.Environment
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgParalelClassical.start
+
+
+.. class:: Environment(num_players=2, n_questions=2, n_games=2)
+
+
+   Bases: :py:obj:`NonLocalGame.abstractEnvironment`
+
+   .. method:: reset(self)
+
+
+   .. method:: step(self, action)
+
+
+   .. method:: evaluate_CHSH(self, aa, bb, xx, yy)
+
+
+   .. method:: evaluate_parallelCHSH(self, Aanswer, Banswer, NN, printout)
+
+
+   .. method:: binary_add(self, blist, n)
+
+
+   .. method:: binary_add1(self, blist, n)
+
+
+   .. method:: play_all_strategies(self, Nrounds)
+
+
+
+.. data:: start
+   
+
+   
+

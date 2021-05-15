@@ -1,0 +1,54 @@
+:mod:`NLG.database.DB`
+======================
+
+.. py:module:: NLG.database.DB
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.database.DB.CHSHdb
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.database.DB.db
+
+
+.. class:: CHSHdb
+
+
+   .. method:: createDB(self)
+
+
+   .. method:: createTables(self)
+
+
+   .. method:: query(self, category='all', difficulty='all', difference='all', num_players=2, n_questions=2)
+
+
+   .. method:: query_categories_games(self, num_players=2, n_questions=2)
+
+
+   .. method:: insert_categories_games(self, n_questions, num_players, generated_games)
+
+
+   .. method:: insert(self, category, difficulty, classic_min, quantum_min, classic_max, quantum_max, difference_min, difference_max, min_state, max_state, min_strategy, max_strategy, game, questions=2, players=2)
+
+
+
+.. data:: db
+   
+
+   
+
