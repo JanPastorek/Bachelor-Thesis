@@ -1,6 +1,3 @@
-# Bachelor thesis
-
-
 ## Welcome
 I am Jan Pastorek and this is my webpage for bachelor thesis.
 
