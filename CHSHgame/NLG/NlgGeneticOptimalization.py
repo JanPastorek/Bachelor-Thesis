@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from qiskit.extensions import IGate
 
-from NonLocalGame import abstractEnvironment, override
-from optimalizers.GeneticAlg import GeneticAlg
+from NLG.NonLocalGame import abstractEnvironment, override
+from NLG.optimalizers.GeneticAlg import GeneticAlg
 
 
 class CHSHgeneticOptimizer(GeneticAlg, abstractEnvironment):
