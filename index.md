@@ -151,7 +151,9 @@ Optimalization of quantum strategies for non-local CHSH games via machine learni
 </details>
 
 ### Deadlines, Milestones
-#### * web page (11:30 29.10.2020) -> Done on time
+<ul>
+<li> #### * web page (11:30 29.10.2020) -> Done on time </li>
+<ul>
 
 #### * set milestones and deadlines (11:30 10.11.2020)  -> Done on time
 
@@ -165,19 +167,9 @@ Optimalization of quantum strategies for non-local CHSH games via machine learni
 
 #### * final testing and submitting (15.5.2021)
 
-<a href="https://www.canva.com/design/DAEPEqLIsWM/ij-WJ0Wpchf-UAXgLVFSWA/view?utm_content=DAEPEqLIsWM&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton">Presentation of sources, and, plan and progress of work</a>
 
 ### Sources
 
-1. Two-player entangled games are NP-hard, Anand Natarajan, Thomas Vidick, Proceedings of CCC'18, arXiv:1710.03062
-2. The Complexity of Entangled Games, Thomas Vidick, PhD thesis, UC Berkeley 2011, https://digitalassets.lib.berkeley.edu/etd/ucb/text/Vidick_berkeley_0028E_11907.pdf
-3. CHSH hra/Bellove nerovnosti - Quantum Computation and Quantum Information, Nielsen Chuang, Vidick, najmä kapitola 2.6
-4. Reinforcement learning https://www.udemy.com/course/artificial-intelligence-reinforcement-learning-in-python/
-5. Quantum Physics, Marco Masi https://www.udemy.com/course/quantum-physics/
-6. Quantum Computing, Michael Nielsen https://quantum.country/
-7. Libraries - Qiskit, Numpy, Keras/PyTorch
-8. Marco Masi.Quantum physics: an overviewof a weird world: a primer on the conceptualfoundations of quantum physics. Independentlypublished, 2019.
-9. Urbain J Le Verrier. Theorie du mouvement demercure. InAnnales de l’Observatoire de Paris,volume 5, 1859.
-10. Albert Einstein.  The photoelectric effect.Ann.Phys, 17(132):4, 1905.
-11. John S Bell.  On the einstein podolsky rosenparadox.Physics Physique Fizika,  1(3):195,1964.
-12. Alain Aspect.  Proposed experiment to test thenonseparability of quantum mechanics.Physicalreview D, 14(8):1944, 1976.
+<a href="https://docs.google.com/document/d/1qOo0u9xQUziNXVe9xGa9vmwTgQ-spIhnZ7xd4Q12jvs/edit?usp=sharing">References</a>
+
+<a href="https://www.canva.com/design/DAEPEqLIsWM/ij-WJ0Wpchf-UAXgLVFSWA/view?utm_content=DAEPEqLIsWM&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton">Presentation of sources, and, plan and progress of work</a>
