@@ -1,0 +1,16 @@
+:mod:`NLG.agents`
+=================
+
+.. py:module:: NLG.agents
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   BasicAgent/index.rst
+   DQNAgent/index.rst
+
+

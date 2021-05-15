@@ -1,0 +1,79 @@
+:mod:`NLG.NlgDeterministic`
+===========================
+
+.. py:module:: NLG.NlgDeterministic
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgDeterministic.Environment
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgDeterministic.rule
+   NLG.NlgDeterministic.create
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgDeterministic.game_type
+
+
+.. class:: Environment(game_type, num_players=2, n_questions=2)
+
+
+   Bases: :py:obj:`NonLocalGame.abstractEnvironment`
+
+   creates CHSH for classic deterministic strategies, works small for 4x4 games 
+
+   .. method:: reset(self)
+
+
+   .. method:: step(self, action)
+
+
+   .. method:: index(self, response)
+
+      :returns index of response so that it can be mapped to state
+
+
+   .. method:: evaluate(self, question, response)
+
+      :returns winning accuracy to input question based on response 
+
+
+   .. method:: play_all_strategies(self)
+
+      plays 16 different strategies,evaluate each and :returns: the best accuracy from all strategies 
+
+
+   .. method:: response_rek(self, n)
+
+
+
+.. function:: rule(a, b, x, y)
+
+
+.. function:: create(game_type)
+
+
+.. data:: game_type
+   :annotation: = [[1, 0, 0, 1], [1, 0, 0, 1], [1, 0, 0, 1], [0, 1, 1, 0]]
+
+   
+

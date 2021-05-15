@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLG.NlgDiscreteStatesActions &#8212; Nonlocal games 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-NLG.NlgDiscreteStatesActions">
+<span id="nlg-nlgdiscretestatesactions"></span><h1><a class="reference internal" href="#module-NLG.NlgDiscreteStatesActions" title="NLG.NlgDiscreteStatesActions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NlgDiscreteStatesActions</span></code></a><a class="headerlink" href="#module-NLG.NlgDiscreteStatesActions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NlgDiscreteStatesActions.Environment" title="NLG.NlgDiscreteStatesActions.Environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Environment</span></code></a></p></td>
+<td><p>Creates CHSH environments for quantum strategies, discretizes and states and uses discrete actions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NLG.NlgDiscreteStatesActions.ACTIONS" title="NLG.NlgDiscreteStatesActions.ACTIONS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACTIONS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="NLG.NlgDiscreteStatesActions.Environment">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">NLG.NlgDiscreteStatesActions.</span></code><code class="sig-name descname"><span class="pre">Environment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_questions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_gates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_players</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">np.array([0,</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">sqrt(2),</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">sqrt(2),</span> <span class="pre">0],</span> <span class="pre">dtype=np.complex64)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">best_or_worst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anneal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_games</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLocalGame.abstractEnvironment</span></code></p>
+<p>Creates CHSH environments for quantum strategies, discretizes and states and uses discrete actions</p>
+<dl class="py method">
+<dt id="NLG.NlgDiscreteStatesActions.Environment.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDiscreteStatesActions.Environment.calculate_state">
+<code class="sig-name descname"><span class="pre">calculate_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">history_actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anneal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment.calculate_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the state according to previous actions in parameter history_actions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDiscreteStatesActions.Environment.save_interesting_strategies">
+<code class="sig-name descname"><span class="pre">save_interesting_strategies</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment.save_interesting_strategies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDiscreteStatesActions.Environment.step">
+<code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment.step" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDiscreteStatesActions.Environment.anneal">
+<code class="sig-name descname"><span class="pre">anneal</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment.anneal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the maximal value of the fitness function by
+executing the simulated annealing algorithm.
+Returns a state (e.g. x) for which fitness(x) is maximal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDiscreteStatesActions.Environment.fitness">
+<code class="sig-name descname"><span class="pre">fitness</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment.fitness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates fitness of the state given by calculation of accuracy over history of actions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDiscreteStatesActions.Environment.neighbors">
+<code class="sig-name descname"><span class="pre">neighbors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment.neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates neighboring gate angle to angle x</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="NLG.NlgDiscreteStatesActions.Environment.random_state">
+<code class="sig-name descname"><span class="pre">random_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.Environment.random_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt id="NLG.NlgDiscreteStatesActions.ACTIONS">
+<code class="sig-prename descclassname"><span class="pre">NLG.NlgDiscreteStatesActions.</span></code><code class="sig-name descname"><span class="pre">ACTIONS</span></code><a class="headerlink" href="#NLG.NlgDiscreteStatesActions.ACTIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Nonlocal games</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Jan Pastorek.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/autoapi/NLG/NlgDiscreteStatesActions/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

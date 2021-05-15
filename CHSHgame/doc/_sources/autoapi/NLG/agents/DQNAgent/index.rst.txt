@@ -1,0 +1,70 @@
+:mod:`NLG.agents.DQNAgent`
+==========================
+
+.. py:module:: NLG.agents.DQNAgent
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.agents.DQNAgent.ReplayBuffer
+   NLG.agents.DQNAgent.DQNAgent
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.agents.DQNAgent.predict
+   NLG.agents.DQNAgent.train_one_step
+
+
+
+.. class:: ReplayBuffer(obs_dim, act_dim, size)
+
+
+   Creates replay buffer to learn from previous episodes
+
+   .. method:: store(self, obs, act, rew, next_obs, done)
+
+
+   .. method:: sample_batch(self, batch_size=64)
+
+
+
+.. function:: predict(model, np_states)
+
+
+.. function:: train_one_step(model, criterion, optimizer, inputs, targets)
+
+
+.. class:: DQNAgent(state_size, action_size, gamma, eps, eps_min, eps_decay, ALL_POSSIBLE_ACTIONS, learning_rate, hidden_layers, hidden_dim, onehot_to_action, action_to_onehot)
+
+
+   Bases: :py:obj:`object`
+
+   .. method:: update_replay_memory(self, state, action, reward, next_state, done)
+
+
+   .. method:: act(self, state)
+
+      :returns action based on neural model prediction / epsilon greedy 
+
+
+   .. method:: replay(self, batch_size=64)
+
+
+   .. method:: load(self, name)
+
+
+   .. method:: save(self, name)
+
+
+

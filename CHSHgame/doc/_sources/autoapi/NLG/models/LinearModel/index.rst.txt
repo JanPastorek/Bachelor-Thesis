@@ -1,0 +1,63 @@
+:mod:`NLG.models.LinearModel`
+=============================
+
+.. py:module:: NLG.models.LinearModel
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.models.LinearModel.LinearModel
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.models.LinearModel.override
+
+
+
+.. function:: override(f)
+
+
+.. class:: LinearModel(input_dim, n_action)
+
+
+   Bases: :py:obj:`NLG.models.RegressionModel.RegressionModel`
+
+   Simple linear approxiamation model 
+
+   .. method:: predict(self, X)
+
+      predicts output for input 
+
+
+   .. method:: sgd(self, X, Y, learning_rate=0.01, momentum=0.9)
+
+      makes one step of sgd 
+
+
+   .. method:: load_weights(self, filepath)
+
+      loads weights 
+
+
+   .. method:: save_weights(self, filepath)
+
+      saves weights 
+
+
+   .. method:: get_losses(self)
+
+      returns learning loss 
+
+
+

@@ -1,0 +1,587 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Nonlocal games’s documentation! &#8212; Nonlocal games 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-nonlocal-games-s-documentation">
+<h1>Welcome to Nonlocal games’s documentation!<a class="headerlink" href="#welcome-to-nonlocal-games-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/NLG/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/NLG/index.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/agents/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.agents</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/agents/index.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/agents/BasicAgent/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.agents.BasicAgent</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/agents/BasicAgent/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/agents/BasicAgent/index.html#classes">Classes</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/agents/BasicAgent/index.html#NLG.agents.BasicAgent.BasicAgent">BasicAgent</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/BasicAgent/index.html#NLG.agents.BasicAgent.BasicAgent.act">act</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/BasicAgent/index.html#NLG.agents.BasicAgent.BasicAgent.train">train</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/BasicAgent/index.html#NLG.agents.BasicAgent.BasicAgent.load">load</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/BasicAgent/index.html#NLG.agents.BasicAgent.BasicAgent.save">save</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.agents.DQNAgent</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#classes">Classes</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#functions">Functions</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.ReplayBuffer">ReplayBuffer</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.ReplayBuffer.store">store</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.ReplayBuffer.sample_batch">sample_batch</a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.predict">predict</a></li>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.train_one_step">train_one_step</a></li>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.DQNAgent">DQNAgent</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.DQNAgent.update_replay_memory">update_replay_memory</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.DQNAgent.act">act</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.DQNAgent.replay">replay</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.DQNAgent.load">load</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/agents/DQNAgent/index.html#NLG.agents.DQNAgent.DQNAgent.save">save</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/database/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.database</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/database/index.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/database/DB/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.database.DB</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#classes">Classes</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#NLG.database.DB.CHSHdb">CHSHdb</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#NLG.database.DB.CHSHdb.createDB">createDB</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#NLG.database.DB.CHSHdb.createTables">createTables</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#NLG.database.DB.CHSHdb.query">query</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#NLG.database.DB.CHSHdb.query_categories_games">query_categories_games</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#NLG.database.DB.CHSHdb.insert_categories_games">insert_categories_games</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#NLG.database.DB.CHSHdb.insert">insert</a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/database/DB/index.html#NLG.database.DB.db">db</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/models/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.models</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/models/index.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.models.KerasModel</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#classes">Classes</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#functions">Functions</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.override">override</a></li>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.show_history">show_history</a></li>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.KerasModel">KerasModel</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.KerasModel.physical_devices">physical_devices</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.KerasModel.predict">predict</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.KerasModel.sgd">sgd</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.KerasModel.load_weights">load_weights</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.KerasModel.save_weights">save_weights</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/KerasModel/index.html#NLG.models.KerasModel.KerasModel.get_losses">get_losses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.models.LinearModel</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#classes">Classes</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#functions">Functions</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#NLG.models.LinearModel.override">override</a></li>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#NLG.models.LinearModel.LinearModel">LinearModel</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#NLG.models.LinearModel.LinearModel.predict">predict</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#NLG.models.LinearModel.LinearModel.sgd">sgd</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#NLG.models.LinearModel.LinearModel.load_weights">load_weights</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#NLG.models.LinearModel.LinearModel.save_weights">save_weights</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/LinearModel/index.html#NLG.models.LinearModel.LinearModel.get_losses">get_losses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/models/MLPModel/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.models.MLPModel</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/models/MLPModel/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/models/MLPModel/index.html#classes">Classes</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/models/MLPModel/index.html#NLG.models.MLPModel.MLP">MLP</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/MLPModel/index.html#NLG.models.MLPModel.MLP.forward">forward</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/MLPModel/index.html#NLG.models.MLPModel.MLP.save_weights">save_weights</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/MLPModel/index.html#NLG.models.MLPModel.MLP.load_weights">load_weights</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.models.RegressionModel</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html#classes">Classes</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html#NLG.models.RegressionModel.RegressionModel">RegressionModel</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html#NLG.models.RegressionModel.RegressionModel.predict">predict</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html#NLG.models.RegressionModel.RegressionModel.sgd">sgd</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html#NLG.models.RegressionModel.RegressionModel.load_weights">load_weights</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html#NLG.models.RegressionModel.RegressionModel.save_weights">save_weights</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/models/RegressionModel/index.html#NLG.models.RegressionModel.RegressionModel.get_losses">get_losses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/optimalizers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.optimalizers</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/optimalizers/index.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.optimalizers.GeneticAlg</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#classes">Classes</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg">GeneticAlg</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg.generate_individual">generate_individual</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg.show_individual">show_individual</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg.fitness">fitness</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg.crossover">crossover</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg.boolean_mutation">boolean_mutation</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg.number_mutation">number_mutation</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg.mutation">mutation</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/optimalizers/GeneticAlg/index.html#NLG.optimalizers.GeneticAlg.GeneticAlg.solve">solve</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/tests/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.tests</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/tests/index.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.tests.testNonLocalGames</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#classes">Classes</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH">TestCHSH</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testRYGate">testRYGate</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testIfCorrectStrategyAndAccuracy">testIfCorrectStrategyAndAccuracy</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testInitialAccuracy">testInitialAccuracy</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCalcWinRate">testCalcWinRate</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCalcWinRate1">testCalcWinRate1</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCalcWinRate2">testCalcWinRate2</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCalcWinRate3">testCalcWinRate3</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCalcWinRate4">testCalcWinRate4</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testGeneticAlg">testGeneticAlg</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testGeneticAlg2">testGeneticAlg2</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testTensorflow1">testTensorflow1</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCHSHdeterministicStrategies">testCHSHdeterministicStrategies</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCHSHaccLearnt">testCHSHaccLearnt</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCHSHaccOptimal">testCHSHaccOptimal</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCHSH2epr">testCHSH2epr</a></li>
+<li class="toctree-l10"><a class="reference internal" href="autoapi/NLG/tests/testNonLocalGames/index.html#NLG.tests.testNonLocalGames.TestCHSH.testCHSH2eprParalelstartacc">testCHSH2eprParalelstartacc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/NLG/index.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.CHSHPrototype</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#classes">Classes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#functions">Functions</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.is_unitary">is_unitary</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumState">QuantumState</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumState.measure">measure</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumState.measure_analytic">measure_analytic</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumState.compose">compose</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumState.__repr__">__repr__</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumOperation">QuantumOperation</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumOperation.apply">apply</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumOperation.compose">compose</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.QuantumOperation.__repr__">__repr__</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.U_X">U_X</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.U_H">U_H</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.U_alice_0">U_alice_0</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.U_alice_1">U_alice_1</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.U_bob_0">U_bob_0</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.U_bob_1">U_bob_1</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#id0">U_alice_1</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#id1">U_bob_0</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#id2">U_bob_1</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.win">win</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.wins">wins</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.a">a</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.b">b</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.state">state</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.result">result</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#id3">state</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.win_rate">win_rate</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.evaluation_tactic">evaluation_tactic</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#NLG.CHSHPrototype.win_rate1">win_rate1</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/CHSHPrototype/index.html#id4">win_rate1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.HyperParametersOptimalization</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#classes">Classes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#NLG.HyperParametersOptimalization.HyperParamCHSHOptimizer">HyperParamCHSHOptimizer</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#NLG.HyperParametersOptimalization.HyperParamCHSHOptimizer.generate_individual">generate_individual</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#NLG.HyperParametersOptimalization.HyperParamCHSHOptimizer.fitness">fitness</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#NLG.HyperParametersOptimalization.HyperParamCHSHOptimizer.number_mutation">number_mutation</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#NLG.HyperParametersOptimalization.HyperParamCHSHOptimizer.mutation">mutation</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#NLG.HyperParametersOptimalization.HyperParamCHSHOptimizer.solve">solve</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/HyperParametersOptimalization/index.html#NLG.HyperParametersOptimalization.ACTIONS">ACTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NlgContinuousGlobalOptimalization</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html#classes">Classes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html#NLG.NlgContinuousGlobalOptimalization.Environment">Environment</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html#NLG.NlgContinuousGlobalOptimalization.Environment.reset">reset</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html#NLG.NlgContinuousGlobalOptimalization.Environment.calculate_new_state">calculate_new_state</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html#NLG.NlgContinuousGlobalOptimalization.Environment.step">step</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgContinuousGlobalOptimalization/index.html#NLG.NlgContinuousGlobalOptimalization.ACTIONS">ACTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NlgDeterministic</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#classes">Classes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#functions">Functions</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.Environment">Environment</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.Environment.reset">reset</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.Environment.step">step</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.Environment.index">index</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.Environment.evaluate">evaluate</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.Environment.play_all_strategies">play_all_strategies</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.Environment.response_rek">response_rek</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.rule">rule</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.create">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgDeterministic/index.html#NLG.NlgDeterministic.game_type">game_type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NlgDiscreteStatesActions</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#classes">Classes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment">Environment</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment.reset">reset</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment.calculate_state">calculate_state</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment.save_interesting_strategies">save_interesting_strategies</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment.step">step</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment.anneal">anneal</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment.fitness">fitness</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment.neighbors">neighbors</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.Environment.random_state">random_state</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgDiscreteStatesActions/index.html#NLG.NlgDiscreteStatesActions.ACTIONS">ACTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NlgGeneticOptimalization</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#classes">Classes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer">CHSHgeneticOptimizer</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer.reset">reset</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer.step">step</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer.generate_individual">generate_individual</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer.fitness">fitness</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer.number_mutation">number_mutation</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer.mutation">mutation</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer.solve">solve</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgGeneticOptimalization/index.html#NLG.NlgGeneticOptimalization.ACTIONS">ACTIONS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NlgParalelClassical</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#classes">Classes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.Environment">Environment</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.Environment.reset">reset</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.Environment.step">step</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.Environment.evaluate_CHSH">evaluate_CHSH</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.Environment.evaluate_parallelCHSH">evaluate_parallelCHSH</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.Environment.binary_add">binary_add</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.Environment.binary_add1">binary_add1</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.Environment.play_all_strategies">play_all_strategies</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NlgParalelClassical/index.html#NLG.NlgParalelClassical.start">start</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NLG.NonLocalGame</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#classes">Classes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#functions">Functions</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.get_scaler">get_scaler</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.show_plot_of">show_plot_of</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.override">override</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment">abstractEnvironment</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.reset">reset</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.step">step</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.measure_probabilities_analytically">measure_probabilities_analytically</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.calc_accuracy">calc_accuracy</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.n_qubits_from_state">n_qubits_from_state</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.count_gates">count_gates</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.get_gate">get_gate</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.reward_only_difference">reward_only_difference</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.reward_qubic">reward_qubic</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.reward_only_best">reward_only_best</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.reward_combined">reward_combined</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.abstractEnvironment.complex_array_to_real">complex_array_to_real</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.Game">Game</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.Game.play_one_episode">play_one_episode</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.Game.evaluate_train">evaluate_train</a></li>
+<li class="toctree-l8"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.Game.evaluate_test">evaluate_test</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.game_with_rows_all_zeroes">game_with_rows_all_zeroes</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.generate_only_interesting_games">generate_only_interesting_games</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.play_deterministic">play_deterministic</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.quantumGEN">quantumGEN</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.quantumNN">quantumNN</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.play_quantum">play_quantum</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.calc_difficulty_of_game">calc_difficulty_of_game</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.to_list">to_list</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.categorize">categorize</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.convert">convert</a></li>
+<li class="toctree-l7"><a class="reference internal" href="autoapi/NLG/NonLocalGame/index.html#NLG.NonLocalGame.max_entangled_difference">max_entangled_difference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/decimalrange/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">decimalrange</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/decimalrange/index.html#module-contents">Module Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/decimalrange/index.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/decimalrange/index.html#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/decimalrange/index.html#attributes">Attributes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#decimalrange.s">s</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#decimalrange.s1">s1</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#id0">s</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#id1">s</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#id2">s1</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#id3">s1</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#decimalrange.Game">Game</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/decimalrange/index.html#decimalrange.Game.play_one_episode">play_one_episode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/decimalrange/index.html#decimalrange.Game.evaluate_train">evaluate_train</a></li>
+<li class="toctree-l6"><a class="reference internal" href="autoapi/decimalrange/index.html#decimalrange.Game.evaluate_test">evaluate_test</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#decimalrange.complex_array_to_real">complex_array_to_real</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/decimalrange/index.html#decimalrange.responses">responses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Nonlocal games</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Jan Pastorek.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

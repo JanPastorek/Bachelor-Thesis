@@ -1,0 +1,74 @@
+:mod:`NLG.NlgGeneticOptimalization`
+===================================
+
+.. py:module:: NLG.NlgGeneticOptimalization
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgGeneticOptimalization.CHSHgeneticOptimizer
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   NLG.NlgGeneticOptimalization.ACTIONS
+
+
+.. class:: CHSHgeneticOptimizer(population_size=15, n_crossover=3, mutation_prob=0.05, state=[0, float(1 / sqrt(2)), -float(1 / sqrt(2)), 0], history_actions=['a0r0', 'b0r0', 'a1r0', 'b1r0'], game_type=[], num_players=2, n_questions=2, best_or_worst='best')
+
+
+   Bases: :py:obj:`optimalizers.GeneticAlg.GeneticAlg`, :py:obj:`NonLocalGame.abstractEnvironment`
+
+   Creates CHSH genetic optimizer 
+
+   .. method:: reset(self, history_actions, n_crossover)
+
+      Initializes number of crossovers and CHSH environment with :param history_actions - new previous actions
+
+
+   .. method:: step(self, action)
+
+
+   .. method:: generate_individual(self)
+
+      Generate random individual.
+
+
+   .. method:: fitness(self, x)
+
+      Returns fitness of a given individual.
+
+
+   .. method:: number_mutation(self, x, prob)
+
+      Elements of x are real numbers [0.0 .. 1.0]. Mutate (i.e. add/substract random number)
+      each number in x with given probabipity.
+
+
+   .. method:: mutation(self, x, prob)
+
+
+   .. method:: solve(self, max_generations, goal_fitness=1)
+
+      Implementation of genetic algorithm. Produce generations until some
+      # individual`s fitness reaches goal_fitness, or you exceed total number
+      # of max_generations generations. Return best found individual. 
+
+
+
+.. data:: ACTIONS
+   
+
+   
+
