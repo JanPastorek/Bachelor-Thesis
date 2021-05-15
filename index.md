@@ -18,7 +18,7 @@ Nonlocal games are a key concept in quantum information, utilized from complexit
 Optimalization of quantum strategies for non-local CHSH games via machine learning and evolutionary algorithms.
 
 ### Code
-
+--> see readme at  <a href="https://github.com/janpastorek/Bachelor-Thesis">Project</a>
 <a href="CHSH - code.zip">Download File</a>
 
 ### Bachelor thesis
@@ -29,28 +29,16 @@ Optimalization of quantum strategies for non-local CHSH games via machine learni
 
 
 <ol>
-<li>Introduction  (what is the problem? Why it is important? Why is is interesting – non locality? FTL information transmition?  Hook reader - storytelling method)
+<li>Introduction  (What is the problem? Why it is important and interesting?)
 </li>
 <li>Quantum Mechanics </li>
-<li>Non local games ( problem in details)<ol>
-      <li>CHSH</li>
-      <li>Complexity</li>
-    </ol></li>
-<li>Reinforcement machine learning  (How are we going to solve this? Method ) <ol>
-      <li>Markov Decision process</li>
-      <li>Algortihm used</li>
-      <li>Complexity</li>
-    </ol></li>
-<li>Optimalization (How are we going to solve this?  Simulated annealing / evolutionary algortihm)</li>
+<li>Non local games ( problem in details)</li>
+<li>Reinforcement machine learning  (How are we going to solve this? -- Methods)</li>
+<li>Genetic algorithms</li>
+<li>Simulated annealing</li>
 <li>Implementation (How have we solved this?)</li>
-       <li>Analysis of obtained results<ol>
-      <li>CHSH 2-player</li>
-      <li>CHSH multiplayer</li>
-              <li>Larger games</li>
-              <li>Comparison quantum vs. classic</li>
-    </ol></li>
- <li>Discussion</li>
- <li>Conclusion</li>
+ <li>Results</li>
+ <li>Discussion and conclusion</li>
 </ol>
 
 ### Diary (in Slovak)
@@ -152,20 +140,21 @@ Optimalization of quantum strategies for non-local CHSH games via machine learni
 
 ### Deadlines, Milestones
 <ul>
-<li> #### * web page (11:30 29.10.2020) -> Done on time </li>
-<ul>
+<li> web page (11:30 29.10.2020) -> Done on time </li>
 
-#### * set milestones and deadlines (11:30 10.11.2020)  -> Done on time
+<li> set milestones and deadlines (11:30 10.11.2020)  -> Done on time </li>
 
-#### * collecting sources(11:30 01.12.2020) -> Done on time
+<li> collecting sources(11:30 01.12.2020) -> Done on time </li>
 
-#### * 10 pages and prototype (15.1.2021) -> Done on time
+<li> 10 pages and prototype (15.1.2021) -> Done on time </li>
   
-#### * final program (15.3.2021) -> Postponed till (31.3.2021)
+<li> final program (15.3.2021) -> Postponed till (31.3.2021) </li>
 
-#### * completing main part of bachelor thesis (15.4.2021)  -> Done on time
+<li> completing main part of bachelor thesis (15.4.2021)  -> Done on time </li>
 
-#### * final testing and submitting (15.5.2021)
+<li> final testing and submitting (15.5.2021) </li>
+
+</ul>
 
 
 ### Sources
