@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 from qiskit.extensions import RYGate, RZGate, RXGate, IGate, CXGate
 from sklearn.preprocessing import StandardScaler
 
-from agents.BasicAgent import BasicAgent
-from agents.DQNAgent import DQNAgent
-from models.LinearModel import LinearModel
+from NLG.agents.BasicAgent import BasicAgent
+from NLG.agents.DQNAgent import DQNAgent
+from NLG.models.LinearModel import LinearModel
 
 
 def get_scaler(env, N, ALL_POSSIBLE_ACTIONS, round_to=2):
@@ -368,7 +368,7 @@ def generate_only_interesting_games(size=4, n_questions=2):
     return list(interesting_games.keys())
 
 
-import NlgDeterministic
+from NLG import NlgDeterministic
 
 
 def play_deterministic(game, which="best"):
@@ -378,8 +378,8 @@ def play_deterministic(game, which="best"):
     return best, worst
 
 
-import NlgDiscreteStatesActions
-import NlgGeneticOptimalization
+from NLG import NlgDiscreteStatesActions
+from NLG import NlgGeneticOptimalization
 
 
 def quantumGEN(states, game):
@@ -569,7 +569,7 @@ def convert(list):
     return categories
 
 
-from database import DB
+from NLG.database import DB
 
 
 def max_entangled_difference(n_players=2, n_questions=2, choose_n_games_from_each_category=5, best_or_worst="best", agent_type=BasicAgent,

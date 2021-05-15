@@ -6,9 +6,9 @@ import numpy as np
 from qiskit.circuit.library import IGate, CXGate
 from sklearn.preprocessing import OneHotEncoder
 
-import NonLocalGame
-from NonLocalGame import Game
-from agents.DQNAgent import DQNAgent
+from NLG import NonLocalGame
+from NLG.NonLocalGame import Game
+from NLG.agents.DQNAgent import DQNAgent
 
 
 class Environment(NonLocalGame.abstractEnvironment):
@@ -235,7 +235,7 @@ class Environment(NonLocalGame.abstractEnvironment):
 import warnings
 
 warnings.filterwarnings('ignore')
-from NonLocalGame import show_plot_of
+from NLG.NonLocalGame import show_plot_of
 
 if __name__ == '__main__':
     # Hyperparameters setting

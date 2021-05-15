@@ -232,34 +232,6 @@ class TestCHSH(unittest.TestCase):
         print(acc)
         assert np.round(acc,2) == 0.85
 
-    def testCHSH2epr(self):
-        max_gates = 10
-        n_questions = 2
-        game_type = [[1, 0, 0, 1],
-                  [1, 0, 0, 1],
-                  [1, 0, 0, 1],
-                  [0, 1, 1, 0]]
-        state = np.array(
-            [0 + 0j, 0 + 0j, 0 + 0j, 0.5 + 0j, 0 + 0j, -0.5 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, -0.5 + 0j, 0 + 0j, 0.5 + 0j, 0 + 0j, 0 + 0j,
-             0 + 0j], dtype=np.complex64)
-        env = Environment(n_questions, game_type, max_gates, initial_state=state, reward_function=Environment.reward_only_difference, anneal=True,
-                          n_games=1)
-        assert np.round(env.accuracy,2) == 0.5
-
-
-    def testCHSH2eprParalelstartacc(self):
-        max_gates = 10
-        n_questions = 2
-        game_type = [[1, 0, 0, 1],
-                  [1, 0, 0, 1],
-                  [1, 0, 0, 1],
-                  [0, 1, 1, 0]]
-        state = np.array(
-            [ 0+0j, 0+0j, 0+0j, 0.5+0j, 0+0j, 0+0j, -0.5+0j, 0+0j, 0+0j, -0.5+0j, 0+0j, 0+0j, 0.5+0j, 0+0j, 0+0j, 0+0j ], dtype=np.complex64)
-        env = Environment(n_questions, game_type, max_gates, initial_state=state, reward_function=Environment.reward_only_difference, anneal=True,
-                          n_games=2)
-        assert np.round(env.accuracy,4) == 0.0625
-
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import itertools
 
-import NonLocalGame
+from NLG import NonLocalGame
 
 
 class Environment(NonLocalGame.abstractEnvironment):
