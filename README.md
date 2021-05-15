@@ -1,4 +1,4 @@
-# Bachelor-Thesis
+# NonlocalGames
 
 Webpage of the project:
 https://janpastorek.github.io/Bachelor-Thesis/
