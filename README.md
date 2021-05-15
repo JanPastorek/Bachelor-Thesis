@@ -11,9 +11,13 @@ Few words towards this project:
 
 NonLocalGame provides API for doing operations on versions of nonlocalenvironments.
 
-There are so far four versions of non local environments.
+There are so far six versions of non local environments.
 
 * CHSHPrototype - is just a prototype that uses fixed gates(path) to illustrate how CHSH game (basic nonlocal game) works.
+
+* NlgDeterministic - is a way to generate best strategies for 2-player, 2-question games classicaly
+
+* NlgParalelClassical - is a way to generate best strategies for 2-player, n-questions games classicaly
 
 * NlgDiscreteStatesActions - is fully functioning nonlocal game discrete environment optimized for discrete states and actions to be used on this environment. Can either use discrete gates as input, or can use simulated annealing on each step's action's gate which always chooses suboptimal gate as action.
 
@@ -30,6 +34,13 @@ I built two Reinforcement learning agents to search these environments:
 * For games with only one qubit per player, one can use another approach - optimalizing already chosen gates through genetic algortihm. 
 
 On top of those I built Genetic algorithm that is able to optimalize agents hyperparameters (and also choose the best reward function)
+
+#### dev
+* clone this repository into your developer folder
+
+* open src folder in your favourite IDE (works with PyCharm)
+
+* install missing libraries - tensorflow, keras, PyTorch, numpy, pandas, scikit-learn, qiskit
 
 
 # Acknowledgments
