@@ -20,7 +20,7 @@ see readme at  <a href="https://github.com/janpastorek/Bachelor-Thesis">Project<
 
 ### Bachelor thesis
 
-<a href="Bachelor_s_Thesis.pdf">Download File</a>
+<a href="Bachelor_s_Thesis (5).pdf">Download File</a>
 
 ### Structure of text - Main chapters
 
