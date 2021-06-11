@@ -46,7 +46,7 @@ On top of those I built Genetic algorithm that is able to optimalize agents hype
 
 * find docummentation at > src/doc
 
-Results for 2-player, 2-question games with 1-epr pair > src/non_local_games_evaluated.html
+Find results for all 2-player, 2-question games with 1-epr pair at  > src/non_local_games_evaluated.html
 
 # Acknowledgments
 
