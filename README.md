@@ -9,11 +9,13 @@ Few words towards this project:
 
 * #### The second goal was to try different approaches that will be able to search through the strategies for non local game and output/learn the paths to bigger winning probability (CHSH value).  
 
-NonLocalGame provides framework for doing operations on versions of nonlocalenvironments.
+NonLocalGame provides abstract framework for nonlocalgames.
 
-There are so far six versions of non local environments.
+There are so far six implementations of non local environments.
 
 * CHSHPrototype - is just a prototype that uses fixed gates(path) to illustrate how CHSH game (basic nonlocal game) works.
+
+For the below ones we have implemented methods to search for the best strategies
 
 * NlgDeterministic - is a way to generate best strategies for 2-player, 2-question games classicaly
 
