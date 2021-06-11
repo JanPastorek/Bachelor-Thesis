@@ -5,7 +5,7 @@ https://janpastorek.github.io/Bachelor-Thesis/
 
 Few words towards this project:
 
-* #### The first goal was to build a scalable non local game environment with local database for storing important information from the search. 
+* #### The first goal was to build a scalable non local game environment with local database for storing important information from the search. (we build scalable environment and we have marked methods which are not scalable and need separate implementation)
 
 * #### The second goal was to try different approaches that will be able to search through the strategies for non local game and output/learn the paths to bigger winning probability (CHSH value).  
 
