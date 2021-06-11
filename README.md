@@ -35,16 +35,16 @@ I built two Reinforcement learning agents to search these environments:
 
 On top of those I built Genetic algorithm that is able to optimalize agents hyperparameters (and also choose the best reward function)
 
-
-
-Results for 2-player, 2-question games with 1-epr pair > src/non_local_games_evaluated.html
-
 #### dev
 * clone this repository into your developer folder
 
 * open src folder in your favourite IDE (works with PyCharm)
 
 * install missing libraries - tensorflow, keras, PyTorch, numpy, pandas, scikit-learn, qiskit
+
+* find docummentation at > src/doc
+
+Results for 2-player, 2-question games with 1-epr pair > src/non_local_games_evaluated.html
 
 # Acknowledgments
 
