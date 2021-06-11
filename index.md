@@ -22,6 +22,10 @@ see readme at  <a href="https://github.com/janpastorek/Bachelor-Thesis">Project<
 
 <a href="Bachelor_s_Thesis (5).pdf">Download File</a>
 
+### Training defense
+
+<a href="https://drive.google.com/file/d/1wTxX6ennOzQQ7bcgVI6wSYzmkDk7MRIG/view?usp=sharing">Video</a>
+
 ### Structure of text - Main chapters
 
 
