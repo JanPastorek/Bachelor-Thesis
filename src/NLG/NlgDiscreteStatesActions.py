@@ -123,13 +123,6 @@ class Environment(NonLocalGame.abstractEnvironment):
         else:
             return gate_matrix
 
-    def _is_entanglement_action(self, action):
-        """Check if an action is an entanglement gate (e.g., CNOT).
-        Entanglement gates can only be applied before the game starts."""
-        if len(action) < 4:
-            return False
-        return action[2:4] == "cx"
-
     def _build_entanglement_operation(self, player_idx, gate_matrix):
         """Build the full-system operation for an entanglement gate (e.g., CNOT)
         applied during the preparation phase before the game starts.
@@ -170,20 +163,7 @@ class Environment(NonLocalGame.abstractEnvironment):
         Enforces game phases: entanglement gates must come before any local gates. """
         result = []
 
-        # Validate action ordering: entanglement gates must come before local gates
-        game_started_in_seq = False
-        for action in history_actions:
-            gate = self.get_gate(action)
-            if gate == IGate:
-                continue
-            if self._is_entanglement_action(action):
-                if game_started_in_seq:
-                    raise ValueError(
-                        f"Cannot apply entanglement gate '{action}' after local gates. "
-                        f"Entanglement must be prepared before the game begins."
-                    )
-            else:
-                game_started_in_seq = True
+        self._validate_action_ordering(history_actions)
 
         for g, q in enumerate(self.questions):
             self.state = self.initial_state.copy()

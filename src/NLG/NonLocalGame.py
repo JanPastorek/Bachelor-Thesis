@@ -177,6 +177,30 @@ class abstractEnvironment(ABC):
         else:
             return IGate
 
+    def _is_entanglement_action(self, action):
+        """Check if an action is an entanglement gate (e.g., CNOT).
+        Entanglement gates can only be applied before the game starts."""
+        if len(action) < 4:
+            return False
+        return action[2:4] == "cx"
+
+    def _validate_action_ordering(self, actions):
+        """Validate that entanglement gates come before any local gates in the action sequence.
+        Raises ValueError if an entanglement gate appears after a local gate."""
+        game_started_in_seq = False
+        for action in actions:
+            gate = self.get_gate(action)
+            if gate == IGate:
+                continue
+            if self._is_entanglement_action(action):
+                if game_started_in_seq:
+                    raise ValueError(
+                        f"Cannot apply entanglement gate '{action}' after local gates. "
+                        f"Entanglement must be prepared before the game begins."
+                    )
+            else:
+                game_started_in_seq = True
+
 
     def reward_only_difference(self, difference):
         # reward is the increase in winning probability

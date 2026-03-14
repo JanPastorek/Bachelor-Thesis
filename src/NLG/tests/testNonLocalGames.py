@@ -516,7 +516,7 @@ class TestGamePhases(unittest.TestCase):
 
     def test_local_gates_only_affect_own_qubits(self):
         """Verify that each player's local gate only affects their own qubits."""
-        initial = np.array([1, 0, 0, 0], dtype=np.complex64)  # |00⟩
+        initial = np.array([1, 0, 0, 0], dtype=np.complex128)  # |00⟩
         tactic = [[1]*4 for _ in range(4)]
         env = Environment(n_questions=2, game_type=tactic, max_gates=10, initial_state=initial)
 
@@ -532,8 +532,7 @@ class TestGamePhases(unittest.TestCase):
         """No-op actions (xxr0) should not start the game phase."""
         env = self._make_env()
         assert not env.game_started
-        # xxr0 is a no-op and should not trigger game_started
-        # Note: xxr0 ends the episode (done=True), so we check via calculate_state
+        # Note: xxr0 ends the episode (done=True), so we verify via calculate_state instead of step()
         result = env.calculate_state(['xxr0', 'a0cxnot', 'a0ry90'])
         for probs in result:
             assert np.isclose(sum(probs), 1.0, atol=1e-5)
