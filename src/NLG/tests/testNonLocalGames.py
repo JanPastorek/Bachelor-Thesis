@@ -2,7 +2,7 @@ import unittest
 from NLG.NlgDiscreteStatesActions import Environment
 from NLG.NlgGeneticOptimalization import CHSHgeneticOptimizer
 import numpy as np
-from qiskit.extensions import RYGate
+from qiskit.circuit.library import RYGate
 from math import pi, sqrt
 
 

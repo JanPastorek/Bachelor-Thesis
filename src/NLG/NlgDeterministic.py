@@ -4,25 +4,25 @@ from NLG import NonLocalGame
 
 
 class Environment(NonLocalGame.abstractEnvironment):
-    """ creates CHSH for classic deterministic strategies, works small for 4x4 games """
+    """ Creates environment for classic deterministic strategies.
+    Supports N players and M questions. """
 
     def __init__(self, game_type, num_players=2, n_questions=2):
         self.num_players = num_players
         self.n_questions = n_questions
-        self.questions = list(itertools.product(list(range(2)), repeat=self.num_players * self.n_questions // 2))
+        # Question combinations: each player gets a question from 0..n_questions-1
+        self.questions = list(itertools.product(range(self.n_questions), repeat=self.num_players))
 
         self.n_games = 1
         self.n_qubits = 0
 
         self.game_type = game_type
 
-        self.possible_answers = dict()
-        self.possible_answers[0] = (0, 1)
-        self.possible_answers[1] = (0, 1)
+        # Each player can answer 0 or 1 (binary answers)
+        self.possible_answers = {q: (0, 1) for q in range(self.n_questions)}
 
-        self.responses = list(
-            itertools.product(list(range(2)),
-                              repeat=self.num_players * self.n_questions //2))
+        # All possible answer combinations (one binary answer per player)
+        self.responses = list(itertools.product(range(2), repeat=self.num_players))
 
     @NonLocalGame.override
     def reset(self):
@@ -42,26 +42,33 @@ class Environment(NonLocalGame.abstractEnvironment):
         return counter
 
     def evaluate(self, question, response):
-        """ :returns winning accuracy to input question based on response """
-        self.state = [0 for _ in range(len(self.game_type))]
-        answer = (self.possible_answers[question[0]][response[0]], self.possible_answers[question[1]][response[1]])
+        """ :returns winning accuracy to input question based on response.
+        Works for N players: question and response are tuples of length num_players. """
+        n_answer_combinations = len(self.game_type[0]) if len(self.game_type) > 0 else 2 ** self.num_players
+        self.state = [0 for _ in range(n_answer_combinations)]
+        answer = tuple(self.possible_answers[question[p]][response[p]] for p in range(self.num_players))
         self.state[self.index(answer)] = 1
         return self.measure_probabilities_analytically()
 
     def play_all_strategies(self):
-        """ plays 16 different strategies,evaluate each and :returns: the best accuracy from all strategies """
+        """ Plays all possible deterministic strategies for N players, evaluates each
+        and :returns: the best and worst accuracy from all strategies.
+        Each player's strategy maps each question to a binary answer. """
         accuracies = []
-        result = []
 
+        # Each player's strategy: a tuple of length n_questions mapping question -> answer (0 or 1)
+        all_single_player_strategies = list(itertools.product(range(2), repeat=self.n_questions))
 
-        response_list = self.response_rek(self.n_questions)
-        for r_A in self.responses:
-            for r_B in self.responses:
-                for x, question in enumerate(self.questions):
-                    response_to_this_question = r_A[question[0]], r_B[question[1]]
-                    result.append(self.evaluate(question, response_to_this_question))
-                accuracies.append(self.calc_accuracy(result))
-                result = []
+        # All combinations of strategies for all N players
+        for strategy_combo in itertools.product(all_single_player_strategies, repeat=self.num_players):
+            result = []
+            for question in self.questions:
+                # Each player answers according to their strategy
+                response_to_this_question = tuple(
+                    strategy_combo[p][question[p]] for p in range(self.num_players)
+                )
+                result.append(self.evaluate(question, response_to_this_question))
+            accuracies.append(self.calc_accuracy(result))
 
         return max(accuracies), min(accuracies)
 

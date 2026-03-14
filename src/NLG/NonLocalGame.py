@@ -2,7 +2,7 @@ import math
 from math import sqrt
 
 import matplotlib.pyplot as plt
-from qiskit.extensions import RYGate, RZGate, RXGate, IGate, CXGate
+from qiskit.circuit.library import RYGate, RZGate, RXGate, IGate, CXGate
 from sklearn.preprocessing import StandardScaler
 
 from NLG.agents.BasicAgent import BasicAgent
@@ -50,23 +50,23 @@ from abc import ABC, abstractmethod
 
 
 class abstractEnvironment(ABC):
-    """ abstract environment to create CHSH framework
+    """ Abstract environment for nonlocal game framework.
+    Supports N players (labeled 'a', 'b', 'c', ...) and M questions (0, 1, 2, ...).
 
-    actions are expected in this format
+    Actions are expected in this format: {player}{question}{gate_type}{angle}
+    e.g. 'a0ry45' = player a, question 0, RY gate, 45 degrees
 
     ACTIONS = [q + axis + "0" for axis in 'xyz' for q in 'ra']
     ACTIONS = [q + axis + "0" for axis in 'y' for q in 'r']
-    PLAYER = ['a', 'b']
-    QUESTION = ['0', '1']
+    PLAYER = [chr(ord('a') + i) for i in range(n_players)]  # e.g. ['a', 'b'] or ['a', 'b', 'c']
+    QUESTION = [str(i) for i in range(n_questions)]  # e.g. ['0', '1'] or ['0', '1', '2']
 
-    ALL_POSSIBLE_ACTIONS = [[p + q + a] for p in PLAYER for q in QUESTION for a in ACTIONS]  # place one gate at some place
+    ALL_POSSIBLE_ACTIONS = [[p + q + a] for p in PLAYER for q in QUESTION for a in ACTIONS]
     ALL_POSSIBLE_ACTIONS.append(["xxr0"])
 
-    # for 1 game with 2 EPR
+    # for EPR pair games
     ALL_POSSIBLE_ACTIONS.append(["a0cxnot"])
     ALL_POSSIBLE_ACTIONS.append(["b0cxnot"])
-    #
-    # for xor paralel with 2EPR
     ALL_POSSIBLE_ACTIONS.append(["a0cxnotr"])
     ALL_POSSIBLE_ACTIONS.append(["b0cxnotr"])"""
 
@@ -371,9 +371,10 @@ def generate_only_interesting_games(size=4, n_questions=2):
 from NLG import NlgDeterministic
 
 
-def play_deterministic(game, which="best"):
-    """ Learns to play the best classic strategy according to game """
-    env = NlgDeterministic.Environment(game)
+def play_deterministic(game, which="best", n_players=2, n_questions=2):
+    """ Learns to play the best classic strategy according to game.
+    Supports N players and M questions. """
+    env = NlgDeterministic.Environment(game, num_players=n_players, n_questions=n_questions)
     best, worst = env.play_all_strategies()
     return best, worst
 
@@ -382,9 +383,9 @@ from NLG import NlgDiscreteStatesActions
 from NLG import NlgGeneticOptimalization
 
 
-def quantumGEN(states, game):
+def quantumGEN(states, game, n_players=2, n_questions=2):
     """ Plays nonlocal game using genetic algorithm multiple -lenght(states)- times and returns the best and the worst result.
-     Works good for small nonlocal games with 1epr pair. For bigger games reinforcement learning is much better choice. """
+     Supports N players and M questions. Works good for small nonlocal games with 1 qubit per player. """
 
     best = 0
     worst = 1
@@ -395,20 +396,21 @@ def quantumGEN(states, game):
 
     for s in states:
         ACTIONS2 = ['r' + axis + "0" for axis in 'y']
-        # ACTIONS2.extend(ACTIONS)  # complexne gaty zatial neural network cez sklearn nedokaze , cize S, T, Y
-        PERSON = ['a', 'b']
-        QUESTION = ['0', '1']
+        PERSON = [chr(ord('a') + i) for i in range(n_players)]
+        QUESTION = [str(i) for i in range(n_questions)]
 
-        ALL_POSSIBLE_ACTIONS = [p + q + a for p in PERSON for q in QUESTION for a in ACTIONS2]  # place one gate at some place
+        ALL_POSSIBLE_ACTIONS = [p + q + a for p in PERSON for q in QUESTION for a in ACTIONS2]
 
         env_max = NlgGeneticOptimalization.CHSHgeneticOptimizer(population_size=30, n_crossover=len(ALL_POSSIBLE_ACTIONS) - 1, mutation_prob=0.1,
                                                                 history_actions=ALL_POSSIBLE_ACTIONS,
-                                                                game_type=game, best_or_worst="best", state=s)
+                                                                game_type=game, best_or_worst="best", state=s,
+                                                                num_players=n_players, n_questions=n_questions)
         res_max = env_max.solve(30)
 
         env_min = NlgGeneticOptimalization.CHSHgeneticOptimizer(population_size=30, n_crossover=len(ALL_POSSIBLE_ACTIONS) - 1, mutation_prob=0.1,
                                                                 history_actions=ALL_POSSIBLE_ACTIONS,
-                                                                game_type=game, best_or_worst="worst", state=s)
+                                                                game_type=game, best_or_worst="worst", state=s,
+                                                                num_players=n_players, n_questions=n_questions)
         res_min = env_min.solve(30)
 
         # take the best found quantum, not just learned value
@@ -426,22 +428,21 @@ def quantumGEN(states, game):
     return best, worst, env_min.complex_array_to_real(min_state), env_min.complex_array_to_real(max_state), min_strategy, max_strategy
 
 
-def quantumNN(states, agent_type, which, game):
-    """ Plays nonlocal game using reinforcement learning multiple -lenght(states)- times and returns the best and the worst result. """
+def quantumNN(states, agent_type, which, game, n_players=2, n_questions=2):
+    """ Plays nonlocal game using reinforcement learning multiple -lenght(states)- times and returns the best and the worst result.
+    Supports N players and M questions. """
 
-    # ACTIONS2 = ['r' + axis + str(180 / 32 * i) for i in range(1, 16) for axis in 'y']
-    # ACTIONS = ['r' + axis + str(-180 / 32 * i) for i in range(1, 16) for axis in 'y']
     ACTIONS2 = ['r' + axis + "0" for axis in 'xyz']
-    # ACTIONS2.extend(ACTIONS)  # complexne gaty zatial neural network cez sklearn nedokaze , cize S, T, Y
-    PERSON = ['a', 'b']
-    QUESTION = ['0', '1']
+    PERSON = [chr(ord('a') + i) for i in range(n_players)]
+    QUESTION = [str(i) for i in range(n_questions)]
 
-    ALL_POSSIBLE_ACTIONS = [[p + q + a] for p in PERSON for q in QUESTION for a in ACTIONS2]  # place one gate at some place
+    ALL_POSSIBLE_ACTIONS = [[p + q + a] for p in PERSON for q in QUESTION for a in ACTIONS2]
     ALL_POSSIBLE_ACTIONS.append(["xxr0"])
-    # ALL_POSSIBLE_ACTIONS.append("smallerAngle")
-    # ALL_POSSIBLE_ACTIONS.append("biggerAngle")
-    ALL_POSSIBLE_ACTIONS.append(["a0cxnot"])
-    ALL_POSSIBLE_ACTIONS.append(["b0cxnot"])
+    # Add CX gate actions for all players
+    for p in PERSON:
+        for qi in QUESTION:
+            ALL_POSSIBLE_ACTIONS.append([f"{p}{qi}cxnot"])
+            ALL_POSSIBLE_ACTIONS.append([f"{p}{qi}cxnotr"])
 
     N = 3000
     n_questions = 4
@@ -465,9 +466,9 @@ def quantumNN(states, agent_type, which, game):
         for alpha in learning_rates:
             for gamma in gammas:
                 env = NlgDiscreteStatesActions.Environment(n_questions=n_questions, game_type=game, max_gates=max_gates,
-                                                           initial_state=state,
+                                                           n_players=n_players, initial_state=state,
                                                            best_or_worst=which,
-                                                           anneal=True)  # mozno optimalnejsie by to bolo keby sa to resetovalo iba
+                                                           anneal=True)
 
                 # (state_size, action_size, gamma, eps, eps_min, eps_decay, alpha, momentum)
                 if agent_type == BasicAgent:
@@ -513,17 +514,21 @@ def quantumNN(states, agent_type, which, game):
     return best, worst, env.complex_array_to_real(min_state), env.complex_array_to_real(max_state), min_strategy, max_strategy
 
 
-def play_quantum(game, which="best", agent_type=BasicAgent, n_qubits=2):
-    """ Learns to play the best quantum strategy according to game
-     for 2 qubits uses genetic alg., for more uses reinforcement learning"""
-    if n_qubits == 2:  # for small games use genetic algorithm
-        states = [np.array([0, 1 / sqrt(2), -1 / sqrt(2), 0], dtype=np.complex64), np.array([1, 0, 0, 0], dtype=np.complex64)]
-        best, worst, min_state, max_state, min_strategy, max_strategy = quantumGEN(states, game)
-    else: # for bigger games use reinforcement learning
+def play_quantum(game, which="best", agent_type=BasicAgent, n_qubits=2, n_players=2, n_questions=2):
+    """ Learns to play the best quantum strategy according to game.
+    Supports N players and M questions.
+    For 1 qubit per player uses genetic alg., for more uses reinforcement learning. """
+    if n_qubits == n_players:  # 1 qubit per player - use genetic algorithm
+        from NLG.NlgDiscreteStatesActions import default_initial_state
+        states = [default_initial_state(n_players)]
+        if n_players == 2:
+            states.append(np.array([1, 0, 0, 0], dtype=np.complex64))
+        best, worst, min_state, max_state, min_strategy, max_strategy = quantumGEN(states, game, n_players, n_questions)
+    else:  # multi-qubit per player - use reinforcement learning
         states = [np.array(
             [0 + 0j, 0 + 0j, 0.707 + 0j, 0 + 0j, -0.707 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, 0 + 0j, 0 + 0j,
              0 + 0j])]
-        best, worst, min_state, max_state, min_strategy, max_strategy = quantumNN(states, agent_type, which, game)
+        best, worst, min_state, max_state, min_strategy, max_strategy = quantumNN(states, agent_type, which, game, n_players, n_questions)
     return best, worst, min_state, max_state, min_strategy, max_strategy
 
 
