@@ -11,11 +11,27 @@ from NLG.NonLocalGame import Game
 from NLG.agents.DQNAgent import DQNAgent
 
 
+def default_initial_state(n_players):
+    """Generate a default entangled initial state for n_players.
+    For 2 players: Bell singlet state |Ψ⁻⟩ = (|01⟩ - |10⟩) / √2
+    For N players (N>2): GHZ state (|00...0⟩ + |11...1⟩) / √2
+    """
+    if n_players == 2:
+        return np.array([0, 1 / sqrt(2), -1 / sqrt(2), 0], dtype=np.complex64)
+    else:
+        state = np.zeros(2 ** n_players, dtype=np.complex64)
+        state[0] = 1 / sqrt(2)   # |00...0⟩
+        state[-1] = 1 / sqrt(2)  # |11...1⟩
+        return state
+
+
 class Environment(NonLocalGame.abstractEnvironment):
-    """ Creates CHSH environments for quantum strategies, discretizes and states and uses discrete actions """
+    """ Creates nonlocal game environments for quantum strategies.
+    Supports N players and M questions.
+    Discretizes states and uses discrete actions. """
 
     def __init__(self, n_questions, game_type, max_gates, n_players=2,
-                 initial_state=np.array([0, 1 / sqrt(2), -1 / sqrt(2), 0], dtype=np.complex64), best_or_worst="best", reward_function=None,
+                 initial_state=None, best_or_worst="best", reward_function=None,
                  anneal=False, n_games=1):
         self.n_games = n_games  # how many games are to be played (paralel)
         self.n_questions = n_questions  # how many atomic questions (to one player)
@@ -27,6 +43,10 @@ class Environment(NonLocalGame.abstractEnvironment):
         self.max_gates = max_gates # limit of gates that can be taken
         self.min_gates = 0
         self.game_type = game_type  # game matrix (rules - when do they win)
+
+        # Default initial state: Bell state for 2 players, GHZ state for N players
+        if initial_state is None:
+            initial_state = default_initial_state(n_players)
         self.initial_state = initial_state  # initial state
         self.state = self.initial_state.copy()
 
@@ -37,8 +57,8 @@ class Environment(NonLocalGame.abstractEnvironment):
             itertools.product(list(range(self.n_questions)),
                               repeat=self.n_qubits))
 
-        self.one_game_answers = list(  # possible answers
-            itertools.product(list(range(self.n_questions)),
+        self.one_game_answers = list(  # possible answer combinations (binary: each player answers 0 or 1)
+            itertools.product(list(range(2)),
                               repeat=self.n_players))
 
         self.repr_state = np.array([x for _ in range(len(self.game_type)) for x in self.state], dtype=np.complex64) # state representation for all comb. of questions
@@ -55,13 +75,21 @@ class Environment(NonLocalGame.abstractEnvironment):
         self.min_found_strategy = []
         self.best_or_worst = best_or_worst
 
-        self.questions = list(itertools.product(list(range(self.n_questions)), repeat=round(np.log2(len(self.game_type))))) # combinations of questions
+        # Combinations of questions: each player gets a question from 0..n_questions-1
+        self.questions = list(itertools.product(list(range(self.n_questions)), repeat=self.n_players))
         print(self.questions)
         self.memory_state = dict() # memoization of calculation, repr_state, accuracies
         self.reward_funcion = reward_function
         if self.reward_funcion == None: self.reward_funcion = self.reward_only_difference
 
-        self.immutable = {"xxr0", "smallerAngle", "biggerAngle", "a0cxnot", "b0cxnot", "a0cxnotr", "b0cxnotr"}
+        # Immutable actions (not real gates)
+        cx_actions = set()
+        for p in range(n_players):
+            pl = chr(ord('a') + p)
+            for qi in range(n_questions):
+                cx_actions.add(f"{pl}{qi}cxnot")
+                cx_actions.add(f"{pl}{qi}cxnotr")
+        self.immutable = {"xxr0", "smallerAngle", "biggerAngle"} | cx_actions
 
         self.use_annealing = anneal # do you want to use annealing?
 
@@ -70,57 +98,69 @@ class Environment(NonLocalGame.abstractEnvironment):
         self.history_actions_anneal = []
         return self.complex_array_to_real(super().reset())
 
+    def _build_player_operation(self, player_idx, gate_matrix):
+        """Build the full-system operation matrix for applying a gate to a specific player's qubit(s).
+
+        Convention: player k's qubit(s) are at position k (counting from right/LSB side).
+        For 1 qubit per player: player 0 (a) is rightmost, player 1 (b) is next, etc.
+        """
+        qubits_per_player = self.n_qubits // self.n_players
+        player_dim = 2 ** qubits_per_player
+
+        # Kronecker product: I_left ⊗ gate_matrix ⊗ I_right
+        left_dim = player_dim ** (self.n_players - 1 - player_idx)
+        right_dim = player_dim ** player_idx
+
+        if left_dim > 1 and right_dim > 1:
+            return np.kron(np.kron(np.identity(left_dim), gate_matrix), np.identity(right_dim))
+        elif left_dim > 1:
+            return np.kron(np.identity(left_dim), gate_matrix)
+        elif right_dim > 1:
+            return np.kron(gate_matrix, np.identity(right_dim))
+        else:
+            return gate_matrix
+
     def calculate_state(self, history_actions, anneal=False):
-        """ Calculates the state according to previous actions in parameter history_actions """
+        """ Calculates the state according to previous actions in parameter history_actions.
+        Supports N players and M questions. """
         result = []
 
         for g, q in enumerate(self.questions):
-            # Alice - a and Bob - b share an entangled state
-            # The input to alice and bob is random
-            # Alice chooses her operation based on her input, Bob too - eg. a0 if alice gets 0 as input
-
             self.state = self.initial_state.copy()
 
             for action in history_actions:
-                # get info from action
-                # if action == "biggerAngle":
-                #     self.velocity *= 2
-                #     continue
-                # elif action == "smallerAngle":
-                #     self.velocity /= 2
-                #     continue
-
                 # decode action
                 gate = self.get_gate(action)
                 if gate == IGate: continue
-                to_whom = action[0:2]
+
+                player_letter = action[0]
+                question_num = int(action[1])
+                player_idx = ord(player_letter) - ord('a')
                 rotate_ancilla = action[2] == 'a'
                 try: gate_angle = np.array([action[4:]], dtype=np.float32)
                 except ValueError: gate_angle = 0
 
-                I_length = int(len(self.initial_state) ** (1 / self.n_players))
+                qubits_per_player = self.n_qubits // self.n_players
 
                 # apply action to state
                 operation = []
 
-                second_player_pos = round(np.log2(len(self.game_type)))//self.n_questions
-                if gate == CXGate:
-                    ctrl = int(action[-1] != "r")
-                    if (q[0] == 0 and to_whom == 'a0') or (q[0] == 1 and to_whom == 'a1'):
-                        operation = np.kron(CXGate(ctrl_state=ctrl).to_matrix(), np.identity(I_length))
-                    if (q[second_player_pos] == 0 and to_whom == 'b0') or (q[second_player_pos] == 1 and to_whom == 'b1'):
-                        operation = np.kron(np.identity(I_length), CXGate(ctrl_state=ctrl).to_matrix())
-                else:
-                    if (q[0] == 0 and to_whom == 'a0') or (q[0] == 1 and to_whom == 'a1'):
-                        if rotate_ancilla:  calc_operation = np.kron(gate((gate_angle * pi / 180).item()).to_matrix(), np.identity(2))
-                        else: calc_operation = np.kron(np.identity(2), gate((gate_angle * pi / 180).item()).to_matrix())
-                        if len(self.state) != 4: operation = np.kron(calc_operation, np.identity(I_length))
-                        else: operation = calc_operation
-                    if (q[second_player_pos] == 0 and to_whom == 'b0') or (q[second_player_pos] == 1 and to_whom == 'b1'):
-                        if rotate_ancilla:  calc_operation = np.kron(np.identity(2), gate((gate_angle * pi / 180).item()).to_matrix())
-                        else: calc_operation = np.kron(gate((gate_angle * pi / 180).item()).to_matrix(), np.identity(2))
-                        if len(self.state) != 4: operation = np.kron(np.identity(I_length), calc_operation)
-                        else: operation = calc_operation
+                # Check if this action applies for this question combination
+                if player_idx < len(q) and q[player_idx] == question_num:
+                    if gate == CXGate:
+                        ctrl = int(action[-1] != "r")
+                        gate_matrix = CXGate(ctrl_state=ctrl).to_matrix()
+                    else:
+                        gate_matrix = gate((gate_angle * pi / 180).item()).to_matrix()
+
+                        # For multi-qubit per player, expand single-qubit gate
+                        if qubits_per_player > 1:
+                            if rotate_ancilla:
+                                gate_matrix = np.kron(gate_matrix, np.identity(2 ** (qubits_per_player - 1)))
+                            else:
+                                gate_matrix = np.kron(np.identity(2 ** (qubits_per_player - 1)), gate_matrix)
+
+                    operation = self._build_player_operation(player_idx, gate_matrix)
 
                 if len(operation) != 0:
                     self.state = np.matmul(operation, self.state)
