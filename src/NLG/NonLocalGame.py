@@ -350,11 +350,12 @@ def generate_only_interesting_games(n_rows=4, n_cols=None, n_questions=2):
     """ Generates only interesting evaluation tactics.
     n_rows = number of question combinations (n_questions^n_players)
     n_cols = number of answer combinations (2^n_players), defaults to n_rows for backward compat.
+    Game matrix entries are binary (0=lose, 1=win).
     Filters out duplicates and symmetric games for standard 2-player, 2-question games. """
     if n_cols is None:
         n_cols = n_rows
-    product = list(itertools.product(list(range(n_questions)), repeat=n_cols))
-    games = list(itertools.product(product, repeat=n_rows))
+    product = list(itertools.product(range(2), repeat=n_cols))  # all possible binary rows (win/lose per answer combo)
+    games = list(itertools.product(product, repeat=n_rows))  # all possible game matrices
     print(len(games))
     if n_rows != 4 or n_cols != 4: return games  # symmetry filtering works only for 4x4 games
     interesting_games = dict()
@@ -449,7 +450,6 @@ def quantumNN(states, agent_type, which, game, n_players=2, n_questions=2):
             ALL_POSSIBLE_ACTIONS.append([f"{p}{qi}cxnotr"])
 
     N = 3000
-    n_questions = 4
     max_gates = 9
     round_to = 2
 

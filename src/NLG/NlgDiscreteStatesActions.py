@@ -57,7 +57,7 @@ class Environment(NonLocalGame.abstractEnvironment):
             itertools.product(list(range(self.n_questions)),
                               repeat=self.n_qubits))
 
-        self.one_game_answers = list(  # possible answers
+        self.one_game_answers = list(  # possible answer combinations (binary: each player answers 0 or 1)
             itertools.product(list(range(2)),
                               repeat=self.n_players))
 
