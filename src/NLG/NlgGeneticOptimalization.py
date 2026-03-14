@@ -63,8 +63,24 @@ class CHSHgeneticOptimizer(GeneticAlg, abstractEnvironment):
 
     @override
     def fitness(self, x):
-        """ Returns fitness of a given individual. Supports N players. """
+        """ Returns fitness of a given individual. Supports N players.
+        Enforces game phases: entanglement gates must come before any local gates. """
         result = []
+
+        # Validate action ordering: entanglement gates must come before local gates
+        game_started_in_seq = False
+        for action in x:
+            gate = self.get_gate(action)
+            if gate == IGate:
+                continue
+            if action[2:4] == "cx":
+                if game_started_in_seq:
+                    raise ValueError(
+                        f"Cannot apply entanglement gate '{action}' after local gates. "
+                        f"Entanglement must be prepared before the game begins."
+                    )
+            else:
+                game_started_in_seq = True
 
         state_len = len(self.initial)
         n_question_combos = len(self.game_type) if len(self.game_type) > 0 else self.n_questions ** self.num_players

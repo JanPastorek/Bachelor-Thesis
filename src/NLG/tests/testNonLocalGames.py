@@ -469,6 +469,94 @@ class TestMultiPlayer(unittest.TestCase):
         assert not done
 
 
+class TestGamePhases(unittest.TestCase):
+    """Tests for game phase enforcement: entanglement before game, local ops during game."""
+
+    def _make_env(self, n_players=2):
+        tactic = [[1, 0, 0, 1],
+                  [1, 0, 0, 1],
+                  [1, 0, 0, 1],
+                  [0, 1, 1, 0]]
+        return Environment(n_questions=2, game_type=tactic, max_gates=10, n_players=n_players)
+
+    def test_entanglement_after_game_start_raises_in_step(self):
+        """Entanglement gates should be rejected after a local gate has been applied."""
+        env = self._make_env()
+        env.step('a0ry90')
+        with self.assertRaises(ValueError):
+            env.step('a0cxnot')
+
+    def test_entanglement_before_game_start_is_ok_in_step(self):
+        """Entanglement gates should be accepted before any local gates."""
+        env = self._make_env()
+        env.step('a0cxnot')  # should not raise
+        env.step('a0ry90')   # local gate after entanglement is fine
+
+    def test_phase_resets_on_reset(self):
+        """Game phase should reset when the environment is reset."""
+        env = self._make_env()
+        env.step('a0ry90')
+        assert env.game_started
+        env.reset()
+        assert not env.game_started
+        env.step('a0cxnot')  # should not raise after reset
+
+    def test_entanglement_after_local_in_calculate_state(self):
+        """calculate_state should reject action lists with entanglement after local gates."""
+        env = self._make_env()
+        with self.assertRaises(ValueError):
+            env.calculate_state(['a0ry90', 'a0cxnot'])
+
+    def test_entanglement_before_local_in_calculate_state(self):
+        """calculate_state should accept entanglement before local gates and produce valid probabilities."""
+        env = self._make_env()
+        result = env.calculate_state(['a0cxnot', 'a0ry90', 'b0ry-45'])
+        for probs in result:
+            assert np.isclose(sum(probs), 1.0, atol=1e-5), f"Probabilities don't sum to 1: {sum(probs)}"
+
+    def test_local_gates_only_affect_own_qubits(self):
+        """Verify that each player's local gate only affects their own qubits."""
+        initial = np.array([1, 0, 0, 0], dtype=np.complex64)  # |00⟩
+        tactic = [[1]*4 for _ in range(4)]
+        env = Environment(n_questions=2, game_type=tactic, max_gates=10, initial_state=initial)
+
+        # RY(180) on player a, question 0: |00⟩ → |01⟩ (player a is qubit 0)
+        result_a = env.calculate_state(['a0ry180'])
+        assert np.isclose(result_a[0][1], 1.0, atol=0.01), f"Expected |01⟩, got probs: {result_a[0]}"
+
+        # RY(180) on player b, question 0: |00⟩ → |10⟩ (player b is qubit 1)
+        result_b = env.calculate_state(['b0ry180'])
+        assert np.isclose(result_b[0][2], 1.0, atol=0.01), f"Expected |10⟩, got probs: {result_b[0]}"
+
+    def test_noop_does_not_start_game(self):
+        """No-op actions (xxr0) should not start the game phase."""
+        env = self._make_env()
+        assert not env.game_started
+        # xxr0 is a no-op and should not trigger game_started
+        # Note: xxr0 ends the episode (done=True), so we check via calculate_state
+        result = env.calculate_state(['xxr0', 'a0cxnot', 'a0ry90'])
+        for probs in result:
+            assert np.isclose(sum(probs), 1.0, atol=1e-5)
+
+    def test_multiple_entanglement_gates_before_game(self):
+        """Multiple entanglement gates should be allowed in the preparation phase."""
+        env = self._make_env()
+        result = env.calculate_state(['a0cxnot', 'a0cxnotr', 'a0ry45', 'b0ry-45'])
+        for probs in result:
+            assert np.isclose(sum(probs), 1.0, atol=1e-5)
+
+    def test_genetic_optimizer_rejects_entanglement_after_local(self):
+        """Genetic optimizer fitness should reject entanglement after local gates."""
+        ga = CHSHgeneticOptimizer(
+            population_size=5, n_crossover=2, mutation_prob=0.1,
+            history_actions=['a0ry0', 'b0ry0'],
+            game_type=[[1, 0, 0, 1], [1, 0, 0, 1], [1, 0, 0, 1], [0, 1, 1, 0]],
+            best_or_worst="best",
+            state=np.array([0, 1 / sqrt(2), -1 / sqrt(2), 0], dtype=np.complex128)
+        )
+        with self.assertRaises(ValueError):
+            ga.fitness(['a0ry45', 'a0cxnot'])
+
 
 if __name__ == "__main__":
     unittest.main()
