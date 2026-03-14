@@ -346,13 +346,17 @@ def game_with_rows_all_zeroes(game):
     return False
 
 
-def generate_only_interesting_games(size=4, n_questions=2):
-    """ Generates only interesting evaluation tactics
-    because some are almost duplicates and some will have no difference between classic and quantum strategies. """
-    product = list(itertools.product(list(range(n_questions)), repeat=size))
-    games = list(itertools.product(product, repeat=size))
+def generate_only_interesting_games(n_rows=4, n_cols=None, n_questions=2):
+    """ Generates only interesting evaluation tactics.
+    n_rows = number of question combinations (n_questions^n_players)
+    n_cols = number of answer combinations (2^n_players), defaults to n_rows for backward compat.
+    Filters out duplicates and symmetric games for standard 2-player, 2-question games. """
+    if n_cols is None:
+        n_cols = n_rows
+    product = list(itertools.product(list(range(n_questions)), repeat=n_cols))
+    games = list(itertools.product(product, repeat=n_rows))
     print(len(games))
-    if size != 4: return games  # this function works only for size games of size 4, in bigger scenarios its harder to tell which game is symmetric so easily
+    if n_rows != 4 or n_cols != 4: return games  # symmetry filtering works only for 4x4 games
     interesting_games = dict()
     for game in games:
         if game_with_rows_all_zeroes(game): continue  # hry, ktore maju nulove riadky su nezaujimave tiez
@@ -583,9 +587,10 @@ def max_entangled_difference(n_players=2, n_questions=2, choose_n_games_from_eac
     Puts results into local database"""
 
     def playGame():
-        classical_max, classical_min = play_deterministic(game_type, best_or_worst)
+        classical_max, classical_min = play_deterministic(game_type, best_or_worst, n_players=n_players, n_questions=n_questions)
         quantum_max, quantum_min, min_state, max_state, min_strategy, max_strategy = play_quantum(game_type, best_or_worst,
-                                                                                                  agent_type=agent_type, n_qubits=n_qubits)
+                                                                                                  agent_type=agent_type, n_qubits=n_qubits,
+                                                                                                  n_players=n_players, n_questions=n_questions)
         # quantum_max = 0
 
         difference_max = 0 if classical_max > quantum_max else quantum_max - classical_max
@@ -603,15 +608,15 @@ def max_entangled_difference(n_players=2, n_questions=2, choose_n_games_from_eac
                   min_strategy=min_strategy, max_strategy=max_strategy, game=game_type)
 
 
-    assert n_qubits == 2 or n_qubits == 4
     db = DB.CHSHdb()
 
-    size_of_game = n_players * n_questions
+    n_question_combos = n_questions ** n_players
+    n_answer_combos = 2 ** n_players
 
     categories = db.query_categories_games(n_questions=n_questions, num_players=n_players)
 
     if categories == []:
-        categories = categorize(generate_only_interesting_games(size_of_game))
+        categories = categorize(generate_only_interesting_games(n_rows=n_question_combos, n_cols=n_answer_combos, n_questions=n_questions))
         db.insert_categories_games(num_players=n_players, n_questions=n_questions, generated_games=categories)
     else:
         categories = convert(categories)

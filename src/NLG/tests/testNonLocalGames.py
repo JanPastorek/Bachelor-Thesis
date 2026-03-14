@@ -233,6 +233,242 @@ class TestCHSH(unittest.TestCase):
         assert np.round(acc,2) == 0.85
 
 
+class TestMultiPlayer(unittest.TestCase):
+    """Tests for generalized N-player, M-question nonlocal games."""
+
+    def test_3player_environment_creation(self):
+        """Test that a 3-player game environment can be created with correct dimensions."""
+        from NLG.NlgDiscreteStatesActions import Environment, default_initial_state
+        # 3 players, 2 questions each: 2^3 = 8 question combos, 2^3 = 8 answer combos
+        game_3p = [
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(0,0,0)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(0,0,1)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(0,1,0)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(0,1,1)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(1,0,0)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(1,0,1)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(1,1,0)
+            [0, 1, 1, 0, 1, 0, 0, 1],  # q=(1,1,1)
+        ]
+        env = Environment(n_questions=2, game_type=game_3p, max_gates=10, n_players=3)
+
+        # State should have 2^3 = 8 elements (GHZ state)
+        assert len(env.initial_state) == 8
+        # Questions should have 2^3 = 8 combinations
+        assert len(env.questions) == 8
+        # repr_state should have 8 * 8 = 64 elements
+        assert len(env.repr_state) == 64
+        # n_qubits should be 3
+        assert env.n_qubits == 3
+
+    def test_3player_default_initial_state(self):
+        """Test that the default GHZ state is normalized for 3 players."""
+        from NLG.NlgDiscreteStatesActions import default_initial_state
+        state = default_initial_state(3)
+        assert len(state) == 8
+        # GHZ state: (|000⟩ + |111⟩) / √2
+        assert np.isclose(abs(state[0])**2 + abs(state[-1])**2, 1.0)
+        assert np.isclose(abs(state[0]), 1/sqrt(2))
+        assert np.isclose(abs(state[-1]), 1/sqrt(2))
+        # All middle elements should be 0
+        for i in range(1, 7):
+            assert np.isclose(state[i], 0)
+
+    def test_3player_calculate_state(self):
+        """Test that gates are applied correctly to 3-player game."""
+        from NLG.NlgDiscreteStatesActions import Environment
+        game_3p = [
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [0, 1, 1, 0, 1, 0, 0, 1],
+        ]
+        env = Environment(n_questions=2, game_type=game_3p, max_gates=10, n_players=3)
+
+        # Apply gates for all 3 players
+        actions = ['a0ry90', 'b0ry-45', 'c0ry45']
+        result = env.calculate_state(actions)
+
+        # Verify normalization: probabilities should sum to 1 for each question combo
+        for probs in result:
+            assert np.isclose(sum(probs), 1.0, atol=1e-5), f"Probabilities don't sum to 1: {sum(probs)}"
+
+    def test_3player_gate_independence(self):
+        """Test that player gates act on independent qubits in a 3-player game."""
+        from NLG.NlgDiscreteStatesActions import Environment
+        game_3p = [[1]*8 for _ in range(8)]  # trivial game (always win)
+        # Start with |000⟩ state
+        initial = np.array([1, 0, 0, 0, 0, 0, 0, 0], dtype=np.complex64)
+        env = Environment(n_questions=2, game_type=game_3p, max_gates=10, n_players=3,
+                         initial_state=initial)
+
+        # Apply RY(180) to player 'a' on question 0 → should flip qubit 0
+        # |000⟩ → |001⟩ (player a is qubit 0, the rightmost)
+        result_a = env.calculate_state(['a0ry180'])
+        # For question (0, *, *), player a gets q=0, so gate is applied
+        # For q=(0,0,0): probs should be concentrated on |001⟩ = index 1
+        assert np.isclose(result_a[0][1], 1.0, atol=0.01), f"Expected |001⟩, got probs: {result_a[0]}"
+
+        # Apply RY(180) to player 'c' on question 0 → should flip qubit 2
+        # |000⟩ → |100⟩ (player c is qubit 2, the leftmost)
+        env2 = Environment(n_questions=2, game_type=game_3p, max_gates=10, n_players=3,
+                          initial_state=initial)
+        result_c = env2.calculate_state(['c0ry180'])
+        # For q=(0,0,0): probs should be concentrated on |100⟩ = index 4
+        assert np.isclose(result_c[0][4], 1.0, atol=0.01), f"Expected |100⟩, got probs: {result_c[0]}"
+
+    def test_3player_deterministic_strategies(self):
+        """Test deterministic strategy evaluation for 3-player game."""
+        from NLG import NlgDeterministic
+        # 3-player game: win if XOR of answers = AND of questions
+        game_3p = [
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(0,0,0): AND=0, win on even-parity answers
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(0,0,1)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(0,1,0)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(0,1,1)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(1,0,0)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(1,0,1)
+            [1, 0, 0, 1, 0, 1, 1, 0],  # q=(1,1,0)
+            [0, 1, 1, 0, 1, 0, 0, 1],  # q=(1,1,1): AND=1, win on odd-parity answers
+        ]
+        env = NlgDeterministic.Environment(game_3p, num_players=3, n_questions=2)
+        best, worst = env.play_all_strategies()
+        # Classical: all answer 0 → wins 7/8 = 0.875
+        assert np.isclose(best, 0.875), f"Expected best classical = 0.875, got {best}"
+
+    def test_3question_2player_environment(self):
+        """Test 2-player game with 3 questions each."""
+        from NLG.NlgDiscreteStatesActions import Environment
+        # 3 questions, 2 players: 3^2 = 9 question combos, 2^2 = 4 answer combos
+        game_3q = [
+            [1, 0, 0, 1],  # q=(0,0)
+            [1, 0, 0, 1],  # q=(0,1)
+            [1, 0, 0, 1],  # q=(0,2)
+            [1, 0, 0, 1],  # q=(1,0)
+            [1, 0, 0, 1],  # q=(1,1)
+            [1, 0, 0, 1],  # q=(1,2)
+            [1, 0, 0, 1],  # q=(2,0)
+            [1, 0, 0, 1],  # q=(2,1)
+            [0, 1, 1, 0],  # q=(2,2)
+        ]
+        env = Environment(n_questions=3, game_type=game_3q, max_gates=10, n_players=2)
+
+        # State should have 2^2 = 4 elements (Bell state for 2 players)
+        assert len(env.initial_state) == 4
+        # Questions should have 3^2 = 9 combinations
+        assert len(env.questions) == 9
+        assert env.questions[0] == (0, 0)
+        assert env.questions[-1] == (2, 2)
+
+    def test_3question_2player_calculate_state(self):
+        """Test gate application with 3 questions per player."""
+        from NLG.NlgDiscreteStatesActions import Environment
+        game_3q = [
+            [1, 0, 0, 1],
+            [1, 0, 0, 1],
+            [1, 0, 0, 1],
+            [1, 0, 0, 1],
+            [1, 0, 0, 1],
+            [1, 0, 0, 1],
+            [1, 0, 0, 1],
+            [1, 0, 0, 1],
+            [0, 1, 1, 0],
+        ]
+        env = Environment(n_questions=3, game_type=game_3q, max_gates=10, n_players=2)
+
+        # Apply gates for questions 0, 1, and 2
+        actions = ['a0ry90', 'b0ry-135', 'a1ry45', 'b1ry-90', 'a2ry-45', 'b2ry45']
+        result = env.calculate_state(actions)
+
+        assert len(result) == 9  # 9 question combinations
+        for probs in result:
+            assert np.isclose(sum(probs), 1.0, atol=1e-5), f"Probabilities don't sum to 1: {sum(probs)}"
+
+    def test_3question_2player_deterministic(self):
+        """Test deterministic strategies with 3 questions per player."""
+        from NLG import NlgDeterministic
+        game_3q = [
+            [1, 0, 0, 1],  # q=(0,0)
+            [1, 0, 0, 1],  # q=(0,1)
+            [1, 0, 0, 1],  # q=(0,2)
+            [1, 0, 0, 1],  # q=(1,0)
+            [1, 0, 0, 1],  # q=(1,1)
+            [1, 0, 0, 1],  # q=(1,2)
+            [1, 0, 0, 1],  # q=(2,0)
+            [1, 0, 0, 1],  # q=(2,1)
+            [0, 1, 1, 0],  # q=(2,2)
+        ]
+        env = NlgDeterministic.Environment(game_3q, num_players=2, n_questions=3)
+        best, worst = env.play_all_strategies()
+        # Classical: all answer same → wins 8/9
+        assert np.isclose(best, 8/9, atol=1e-10), f"Expected best = {8/9}, got {best}"
+
+    def test_3player_genetic_optimizer(self):
+        """Test genetic optimizer with 3 players."""
+        game_3p = [
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0, 1, 1, 0],
+            [0, 1, 1, 0, 1, 0, 0, 1],
+        ]
+        ACTIONS2 = ['r' + axis + "0" for axis in 'y']
+        PERSON = ['a', 'b', 'c']
+        QUESTION = ['0', '1']
+        ALL_POSSIBLE_ACTIONS = [p + q + a for p in PERSON for q in QUESTION for a in ACTIONS2]
+
+        ghz_state = np.array([1/sqrt(2), 0, 0, 0, 0, 0, 0, 1/sqrt(2)], dtype=np.complex128)
+        ga = CHSHgeneticOptimizer(
+            population_size=30, n_crossover=len(ALL_POSSIBLE_ACTIONS) - 1,
+            mutation_prob=0.1, history_actions=ALL_POSSIBLE_ACTIONS,
+            game_type=game_3p, best_or_worst="best", state=ghz_state,
+            num_players=3, n_questions=2
+        )
+        best = ga.solve(15)
+        # Should find a strategy at least as good as classical (0.875)
+        assert best[1] >= 0.5, f"Genetic optimizer 3-player result too low: {best[1]}"
+
+    def test_4player_environment(self):
+        """Test that a 4-player game environment can be created."""
+        from NLG.NlgDiscreteStatesActions import Environment, default_initial_state
+        # 4 players, 2 questions: 2^4 = 16 question combos, 2^4 = 16 answer combos
+        game_4p = [[1 if (i + j) % 2 == 0 else 0 for j in range(16)] for i in range(16)]
+        env = Environment(n_questions=2, game_type=game_4p, max_gates=10, n_players=4)
+        assert len(env.initial_state) == 16
+        assert len(env.questions) == 16
+        assert env.n_qubits == 4
+
+    def test_default_initial_state_normalization(self):
+        """Test that default initial states are normalized for various player counts."""
+        from NLG.NlgDiscreteStatesActions import default_initial_state
+        for n in [2, 3, 4, 5]:
+            state = default_initial_state(n)
+            norm = sum(abs(a)**2 for a in state)
+            assert np.isclose(norm, 1.0, atol=1e-6), f"State not normalized for {n} players: norm={norm}"
+            assert len(state) == 2**n
+
+    def test_3player_step_integration(self):
+        """Test that the step method works for 3-player game."""
+        from NLG.NlgDiscreteStatesActions import Environment
+        game_3p = [[1]*8 for _ in range(8)]
+        env = Environment(n_questions=2, game_type=game_3p, max_gates=10, n_players=3)
+        initial_acc = env.accuracy
+
+        state, reward, done = env.step('a0ry90')
+        assert not done
+        state, reward, done = env.step('b0ry45')
+        assert not done
+        state, reward, done = env.step('c0ry-45')
+        assert not done
+
+
 
 if __name__ == "__main__":
     unittest.main()
