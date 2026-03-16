@@ -91,11 +91,14 @@ class Environment(NonLocalGame.abstractEnvironment):
                 cx_actions.add(f"{pl}{qi}cxnotr")
         self.immutable = {"xxr0", "smallerAngle", "biggerAngle"} | cx_actions
 
+        self.game_started = False  # Tracks whether the game has started (after entanglement preparation)
+
         self.use_annealing = anneal # do you want to use annealing?
 
     @NonLocalGame.override
     def reset(self):
         self.history_actions_anneal = []
+        self.game_started = False
         return self.complex_array_to_real(super().reset())
 
     def _build_player_operation(self, player_idx, gate_matrix):
@@ -120,10 +123,47 @@ class Environment(NonLocalGame.abstractEnvironment):
         else:
             return gate_matrix
 
+    def _build_entanglement_operation(self, player_idx, gate_matrix):
+        """Build the full-system operation for an entanglement gate (e.g., CNOT)
+        applied during the preparation phase before the game starts.
+
+        The gate acts on qubits at positions player_idx and player_idx+1,
+        allowing entanglement across player boundaries.
+        """
+        qubits_per_player = self.n_qubits // self.n_players
+
+        if qubits_per_player >= 2:
+            # Multi-qubit per player: CNOT within player's own qubit space
+            return self._build_player_operation(player_idx, gate_matrix)
+
+        # Single qubit per player: CNOT spans two adjacent players
+        if player_idx + 1 >= self.n_qubits:
+            raise ValueError(
+                f"Cannot apply entanglement CNOT at qubit {player_idx}: "
+                f"no adjacent qubit to entangle with (total qubits: {self.n_qubits})."
+            )
+
+        k = player_idx
+        n = self.n_qubits
+        left_dim = 2 ** (n - k - 2)
+        right_dim = 2 ** k
+
+        if left_dim > 1 and right_dim > 1:
+            return np.kron(np.kron(np.identity(left_dim), gate_matrix), np.identity(right_dim))
+        elif left_dim > 1:
+            return np.kron(np.identity(left_dim), gate_matrix)
+        elif right_dim > 1:
+            return np.kron(gate_matrix, np.identity(right_dim))
+        else:
+            return gate_matrix
+
     def calculate_state(self, history_actions, anneal=False):
         """ Calculates the state according to previous actions in parameter history_actions.
-        Supports N players and M questions. """
+        Supports N players and M questions.
+        Enforces game phases: entanglement gates must come before any local gates. """
         result = []
+
+        self._validate_action_ordering(history_actions)
 
         for g, q in enumerate(self.questions):
             self.state = self.initial_state.copy()
@@ -145,20 +185,23 @@ class Environment(NonLocalGame.abstractEnvironment):
                 # apply action to state
                 operation = []
 
-                # Check if this action applies for this question combination
-                if player_idx < len(q) and q[player_idx] == question_num:
-                    if gate == CXGate:
-                        ctrl = int(action[-1] != "r")
-                        gate_matrix = CXGate(ctrl_state=ctrl).to_matrix()
-                    else:
-                        gate_matrix = gate((gate_angle * pi / 180).item()).to_matrix()
+                if self._is_entanglement_action(action):
+                    # PREPARE phase: apply entanglement gate unconditionally
+                    # (entanglement is set up before questions are revealed)
+                    ctrl = int(action[-1] != "r")
+                    gate_matrix = CXGate(ctrl_state=ctrl).to_matrix()
+                    operation = self._build_entanglement_operation(player_idx, gate_matrix)
+                elif player_idx < len(q) and q[player_idx] == question_num:
+                    # PLAY phase: apply local gate only for matching question
+                    # (each player works only on their own qubits)
+                    gate_matrix = gate((gate_angle * pi / 180).item()).to_matrix()
 
-                        # For multi-qubit per player, expand single-qubit gate
-                        if qubits_per_player > 1:
-                            if rotate_ancilla:
-                                gate_matrix = np.kron(gate_matrix, np.identity(2 ** (qubits_per_player - 1)))
-                            else:
-                                gate_matrix = np.kron(np.identity(2 ** (qubits_per_player - 1)), gate_matrix)
+                    # For multi-qubit per player, expand single-qubit gate
+                    if qubits_per_player > 1:
+                        if rotate_ancilla:
+                            gate_matrix = np.kron(gate_matrix, np.identity(2 ** (qubits_per_player - 1)))
+                        else:
+                            gate_matrix = np.kron(np.identity(2 ** (qubits_per_player - 1)), gate_matrix)
 
                     operation = self._build_player_operation(player_idx, gate_matrix)
 
@@ -203,6 +246,18 @@ class Environment(NonLocalGame.abstractEnvironment):
         done = False
 
         if type(action) == list: action = action[0]
+
+        # Enforce game phases: entanglement only before game starts,
+        # then each player can only work on their own qubits
+        if self._is_entanglement_action(action):
+            if self.game_started:
+                raise ValueError(
+                    f"Cannot apply entanglement gate '{action}' after the game has started. "
+                    f"Entanglement can only be prepared before the game begins."
+                )
+        elif self.get_gate(action) != IGate:
+            self.game_started = True
+
         # play game
         self.history_actions.append(action)
         self.history_actions_anneal.append(action)

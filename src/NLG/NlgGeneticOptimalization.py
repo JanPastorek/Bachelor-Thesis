@@ -63,8 +63,11 @@ class CHSHgeneticOptimizer(GeneticAlg, abstractEnvironment):
 
     @override
     def fitness(self, x):
-        """ Returns fitness of a given individual. Supports N players. """
+        """ Returns fitness of a given individual. Supports N players.
+        Enforces game phases: entanglement gates must come before any local gates. """
         result = []
+
+        self._validate_action_ordering(x)
 
         state_len = len(self.initial)
         n_question_combos = len(self.game_type) if len(self.game_type) > 0 else self.n_questions ** self.num_players
